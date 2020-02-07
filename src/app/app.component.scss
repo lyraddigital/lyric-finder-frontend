@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+}
+
+.toolbar-logo {
+    padding-right: 12px;
+    font-size: 1.5em;
+    line-height: 0.85em;
+}
+
+form, #main-screen {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-screen {  
+    padding: 16px;
+    gap: 16px;
+}
+
+#main-screen, #results {
+    flex: 1 0 0;
+}

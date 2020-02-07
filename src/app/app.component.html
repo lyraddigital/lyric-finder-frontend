@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <mat-icon class="toolbar-logo">queue_music</mat-icon>
+  <span>Lyrics Finder</span>
+</mat-toolbar>
+
+<div id="main-screen">
+  <form [formGroup]="lyricsFormGroup" (ngSubmit)="performSearch()">
+    <mat-form-field appearance="fill">
+      <mat-label>Artist</mat-label>
+      <input matInput placeholder="Artist" formControlName="artist" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" formControlName="title" />
+    </mat-form-field>
+    <div>
+      <button mat-flat-button color="primary" [disabled]="lyricsFormGroup.invalid">Search</button>
+    </div>
+  </form>
+
+  <div id="results">
+    <ng-container *ngIf="!isLoading; else loading">
+      <ng-container *ngIf="!showError; else errorMessageDiv">
+        <ng-container *ngIf="lyricsFound || !formSubmitted; else notFound">
+          <p style="text-align: center;" [innerHTML]="lyrics"></p>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+  
+  <ng-template #loading>
+    <mat-spinner color="accent"></mat-spinner>
+  </ng-template>
+  
+  <ng-template #notFound>
+    Lyrics were not found.
+  </ng-template>
+  
+  <ng-template #errorMessageDiv>
+    <p>Error fetching the lyrics.</p>
+  </ng-template>
+</div>
