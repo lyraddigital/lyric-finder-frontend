@@ -23,3 +23,23 @@ form, #main-screen {
 #main-screen, #results {
     flex: 1 0 0;
 }
+
+#results {
+    margin-top: 16px;
+    overflow-y: scroll;
+}
+
+@media (orientation: landscape) {
+    #main-screen {
+        flex-direction: row;
+    }
+
+    form {
+        flex: 1 0 0;
+    }
+
+    #results {
+        margin-top: 0;
+        margin-left: 16px;
+    }
+}

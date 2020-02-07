@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LyricsService } from 'src/app/core/lyrics/lyrics.service';
 import { LoadingService } from 'src/app/core/loading/loading.service';
@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   showError: boolean;
   isLoading: boolean;
   lyricsFormGroup: FormGroup;
+  artistFieldControl: AbstractControl;
+  titleFieldControl: AbstractControl;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -31,15 +33,24 @@ export class AppComponent implements OnInit {
       title: ['', Validators.required]
     });
 
+    this.artistFieldControl = this.lyricsFormGroup.get('artist');
+    this.titleFieldControl = this.lyricsFormGroup.get('title');
+
     this.loadingService.loaderStateChange().subscribe(state => {
       this.isLoading = state === LoaderState.Opened;
+      this.toggleFields();
     });
   }
 
   performSearch() {
     if (this.lyricsFormGroup.valid) {
-      const artist = this.lyricsFormGroup.get('artist').value;
-      const title = this.lyricsFormGroup.get('title').value;
+      const artist = this.artistFieldControl.value;
+      const title = this.titleFieldControl.value;
+      
+      this.artistFieldControl.setValue(null, { emitEvent: false });
+      this.artistFieldControl.markAsPristine();
+      this.artistFieldControl.markAsUntouched();
+      this.titleFieldControl.setValue(null, { emitEvent: false });
 
       this.lyricsService.searchLyricsForSong(artist, title).subscribe(
         result => {
@@ -51,6 +62,20 @@ export class AppComponent implements OnInit {
           this.showError = true;
         }
       );
+    }
+  }
+
+  get isSubmitButtonDisabled() {
+    return this.isLoading || this.lyricsFormGroup.invalid;
+  }
+
+  private toggleFields() {
+    if (this.isLoading) {
+      this.artistFieldControl.disable();
+      this.titleFieldControl.disable();
+    } else {
+      this.artistFieldControl.enable();
+      this.titleFieldControl.enable();
     }
   }
 }
