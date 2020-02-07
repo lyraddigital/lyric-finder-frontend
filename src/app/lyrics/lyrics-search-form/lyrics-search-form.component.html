@@ -1,0 +1,13 @@
+<form [formGroup]="lyricsFormGroup" (ngSubmit)="performSearch()">
+    <mat-form-field appearance="fill">
+      <mat-label>Artist</mat-label>
+      <input matInput placeholder="Artist" formControlName="artist" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" formControlName="title" />
+    </mat-form-field>
+    <div>
+      <button mat-flat-button color="primary" [disabled]="isSubmitButtonDisabled">Search</button>
+    </div>
+</form>

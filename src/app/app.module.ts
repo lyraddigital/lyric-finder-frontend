@@ -14,10 +14,18 @@ import { environment } from 'src/environments/environment';
 import { BASE_API_URL, BaseUrlInterceptor } from './core/utils/base-url-interceptor.service';
 import { AjaxRequestLoaderService } from './core/utils/ajax-request-loader.service';
 import { AppComponent } from './app.component';
+import { LyricsSearchFormComponent } from './lyrics/lyrics-search-form/lyrics-search-form.component';
+import { LyricsContainerComponent } from './lyrics/lyrics-container/lyrics-container.component';
+import { NoLyricsFoundComponent } from './lyrics/no-lyrics-found/no-lyrics-found.component';
+import { LyricDetailsComponent } from './lyrics/lyric-details/lyric-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LyricsSearchFormComponent,
+    LyricsContainerComponent,
+    NoLyricsFoundComponent,
+    LyricDetailsComponent
   ],
   imports: [
     BrowserModule,
