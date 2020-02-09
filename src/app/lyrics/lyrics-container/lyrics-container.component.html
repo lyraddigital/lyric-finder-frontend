@@ -1,18 +1,12 @@
 <div id="main-screen">
-    <app-lyrics-search-form></app-lyrics-search-form>
+    <!-- <app-lyrics-search-form></app-lyrics-search-form> -->
     <div id="results">
-      <ng-container *ngIf="!isLoading; else loading">
-        <ng-container *ngIf="!showError; else errorMessageDiv">
-          result
-        </ng-container>
-      </ng-container>
+      <!-- <ng-container *ngIf="$fetchLyrics; else loading">
+        
+      </ng-container> -->
     </div>
     
-    <ng-template #loading>
+    <!-- <ng-template #loading>
       <mat-spinner color="accent"></mat-spinner>
-    </ng-template>
-    
-    <ng-template #errorMessageDiv>
-      <p>Error fetching the lyrics.</p>
-    </ng-template>
+    </ng-template> -->
   </div>

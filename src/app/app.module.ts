@@ -21,9 +21,9 @@ import { LyricDetailsComponent } from './lyrics/lyric-details/lyric-details.comp
 @NgModule({
   declarations: [
     AppComponent,
-    LyricsSearchFormComponent,
+    // LyricsSearchFormComponent,
     LyricsContainerComponent,
-    LyricDetailsComponent
+    // LyricDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +39,8 @@ import { LyricDetailsComponent } from './lyrics/lyric-details/lyric-details.comp
   ],
   providers: [
     { provide: BASE_API_URL, useValue: environment.lyricApiEndpoint },
-    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AjaxRequestLoaderService, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AjaxRequestLoaderService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

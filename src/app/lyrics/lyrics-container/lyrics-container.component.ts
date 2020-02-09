@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SafeHtml } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 import { LyricsService } from 'src/app/core/lyrics/lyrics.service';
-import { LoadingService } from 'src/app/core/loading/loading.service';
-import { LoaderState } from 'src/app/core/models/loader-state';
+import { FetchResult } from 'src/app/core/models/fetch-result';
+import { LyricResult } from 'src/app/core/models/lyric-result';
 
 @Component({
   selector: 'app-lyrics-container',
@@ -11,18 +11,13 @@ import { LoaderState } from 'src/app/core/models/loader-state';
   styleUrls: ['./lyrics-container.component.scss']
 })
 export class LyricsContainerComponent implements OnInit {
-  lyrics: SafeHtml;
-  showError: boolean;
-  isLoading: boolean;
+  $fetchLyrics: Observable<FetchResult<LyricResult>>;
 
   constructor(
-    private readonly lyricsService: LyricsService,
-    private readonly loadingService: LoadingService
+    private readonly lyricsService: LyricsService
   ) {}
 
   ngOnInit() {
-    this.loadingService.loaderStateChange().subscribe(state => {
-      this.isLoading = state === LoaderState.Opened;
-    });
+    this.$fetchLyrics = this.lyricsService.searchLyricsForSong('Mandonna', 'Vogue');
   }
 }

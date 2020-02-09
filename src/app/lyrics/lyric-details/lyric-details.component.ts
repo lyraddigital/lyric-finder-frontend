@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lyric-details',
@@ -8,4 +9,7 @@ import { Component } from '@angular/core';
 export class LyricDetailsComponent {
   formSubmitted: boolean;
   lyricsFound: boolean;
+  lyrics: SafeHtml;
+  showError: boolean;
+  isLoading: boolean;
 }
