@@ -16,7 +16,6 @@ import { AjaxRequestLoaderService } from './core/utils/ajax-request-loader.servi
 import { AppComponent } from './app.component';
 import { LyricsSearchFormComponent } from './lyrics/lyrics-search-form/lyrics-search-form.component';
 import { LyricsContainerComponent } from './lyrics/lyrics-container/lyrics-container.component';
-import { NoLyricsFoundComponent } from './lyrics/no-lyrics-found/no-lyrics-found.component';
 import { LyricDetailsComponent } from './lyrics/lyric-details/lyric-details.component';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { LyricDetailsComponent } from './lyrics/lyric-details/lyric-details.comp
     AppComponent,
     LyricsSearchFormComponent,
     LyricsContainerComponent,
-    NoLyricsFoundComponent,
     LyricDetailsComponent
   ],
   imports: [

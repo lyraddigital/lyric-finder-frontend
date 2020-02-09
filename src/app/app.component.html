@@ -3,26 +3,4 @@
   <span>Lyrics Finder</span>
 </mat-toolbar>
 
-<div id="main-screen">
-  <div id="results">
-    <ng-container *ngIf="!isLoading; else loading">
-      <ng-container *ngIf="!showError; else errorMessageDiv">
-        <ng-container *ngIf="lyricsFound || !formSubmitted; else notFound">
-          <p style="text-align: center;" [innerHTML]="lyrics"></p>
-        </ng-container>
-      </ng-container>
-    </ng-container>
-  </div>
-  
-  <ng-template #loading>
-    <mat-spinner color="accent"></mat-spinner>
-  </ng-template>
-  
-  <ng-template #notFound>
-    Lyrics were not found.
-  </ng-template>
-  
-  <ng-template #errorMessageDiv>
-    <p>Error fetching the lyrics.</p>
-  </ng-template>
-</div>
+<app-lyrics-container></app-lyrics-container>
