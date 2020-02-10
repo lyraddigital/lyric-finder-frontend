@@ -1,2 +1,2 @@
-export { FetchResult } from './models/fetch-result';
+export { FetchResult } from './models';
 export { ApiModule } from './api.module';
