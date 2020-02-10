@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 import { LyricsSearchCriteria } from 'src/app/lyrics/models';
 
@@ -10,6 +10,8 @@ import { LyricsSearchCriteria } from 'src/app/lyrics/models';
 })
 export class LyricsSearchFormComponent implements OnInit {
   @Output() formSubmitted = new EventEmitter<LyricsSearchCriteria>();
+  @ViewChild(FormGroupDirective) lyricsForm: FormGroupDirective;
+
   lyricsFormGroup: FormGroup;
   artistFieldControl: AbstractControl;
   titleFieldControl: AbstractControl;
@@ -29,18 +31,14 @@ export class LyricsSearchFormComponent implements OnInit {
   performSearch() {
     if (this.lyricsFormGroup.valid) {
       const searchCriteria = this.lyricsFormGroup.value as LyricsSearchCriteria;
-
-      this.artistFieldControl.setValue(null, { emitEvent: false });
-      this.artistFieldControl.markAsPristine();
-      this.artistFieldControl.markAsUntouched();
-      this.titleFieldControl.setValue(null, { emitEvent: false });
+      this.lyricsForm.resetForm();
 
       this.formSubmitted.emit(searchCriteria);
     }
   }
 
   get isSubmitButtonDisabled() {
-    return false;
+    return this.lyricsFormGroup.invalid;
   }
 
   // private toggleFields() {
