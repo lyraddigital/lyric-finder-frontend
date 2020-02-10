@@ -27,7 +27,7 @@ export class LyricsSearchFormComponent implements OnInit {
     if (this.lyricsFormGroup.valid) {
       const artist = this.artistFieldControl.value;
       const title = this.titleFieldControl.value;
-      
+
       this.artistFieldControl.setValue(null, { emitEvent: false });
       this.artistFieldControl.markAsPristine();
       this.artistFieldControl.markAsUntouched();

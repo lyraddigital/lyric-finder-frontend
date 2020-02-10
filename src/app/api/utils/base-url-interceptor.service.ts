@@ -5,9 +5,7 @@ import { retry } from 'rxjs/operators';
 
 export const BASE_API_URL = 'BASE_API_URL';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BaseUrlInterceptor implements HttpInterceptor {
     constructor(@Inject(BASE_API_URL) private baseUrl: string) {  }
 

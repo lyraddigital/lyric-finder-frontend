@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LyricsService } from 'src/app/core/lyrics/lyrics.service';
-import { FetchResult } from 'src/app/core/models/fetch-result';
-import { LyricResult } from 'src/app/core/models/lyric-result';
+import { FetchResult } from 'src/app/api';
+import { LyricsService } from 'src/app/lyrics/lyrics.service';
+import { LyricResult } from 'src/app/lyrics/models';
 
 @Component({
   selector: 'app-lyrics-container',
@@ -18,6 +18,6 @@ export class LyricsContainerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.$fetchLyrics = this.lyricsService.searchLyricsForSong('Mandonna', 'Vogue');
+    this.$fetchLyrics = this.lyricsService.searchLyricsForSong('Maddonna', 'Vogue');
   }
 }

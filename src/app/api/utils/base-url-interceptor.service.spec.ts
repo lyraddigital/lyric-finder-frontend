@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoadingService } from './loading.service';
+import { BaseUrlInterceptor } from './base-url-interceptor.service';
 
-describe('LoadingService', () => {
-  let service: LoadingService;
+describe('BaseUrlInterceptor', () => {
+  let service: BaseUrlInterceptor;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LoadingService);
+    service = TestBed.inject(BaseUrlInterceptor);
   });
 
   it('should be created', () => {

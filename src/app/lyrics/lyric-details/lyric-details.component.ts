@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { SafeHtml } from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+
+import { FetchResult } from 'src/app/api';
+import { LyricResult } from 'src/app/lyrics/models';
 
 @Component({
   selector: 'app-lyric-details',
@@ -7,9 +9,5 @@ import { SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./lyric-details.component.scss']
 })
 export class LyricDetailsComponent {
-  formSubmitted: boolean;
-  lyricsFound: boolean;
-  lyrics: SafeHtml;
-  showError: boolean;
-  isLoading: boolean;
+  @Input() fetchResult: FetchResult<LyricResult>;
 }

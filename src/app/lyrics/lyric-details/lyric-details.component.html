@@ -1,9 +1,7 @@
-<ng-container *ngIf="!showError; else errorMessageDiv">
-    result
-  </ng-container>
-
-<ng-container *ngIf="lyricsFound || !formSubmitted; else notFound">
-    <p style="text-align: center;" [innerHTML]="lyrics"></p>
+<ng-container *ngIf="fetchResult.success; else errorMessageDiv">
+    <ng-container *ngIf="fetchResult.result && fetchResult.result.found; else notFound">
+        <p style="text-align: center;" [innerHTML]="fetchResult.result.lyrics"></p>
+    </ng-container>
 </ng-container>
 
 <ng-template #errorMessageDiv>
