@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { LyricsSearchCriteria } from 'src/app/lyrics/models';
 
 @Component({
   selector: 'app-lyrics-search-form',
@@ -7,6 +9,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   styleUrls: ['./lyrics-search-form.component.scss']
 })
 export class LyricsSearchFormComponent implements OnInit {
+  @Output() formSubmitted = new EventEmitter<LyricsSearchCriteria>();
   lyricsFormGroup: FormGroup;
   artistFieldControl: AbstractControl;
   titleFieldControl: AbstractControl;
@@ -25,30 +28,19 @@ export class LyricsSearchFormComponent implements OnInit {
 
   performSearch() {
     if (this.lyricsFormGroup.valid) {
-      const artist = this.artistFieldControl.value;
-      const title = this.titleFieldControl.value;
+      const searchCriteria = this.lyricsFormGroup.value as LyricsSearchCriteria;
 
       this.artistFieldControl.setValue(null, { emitEvent: false });
       this.artistFieldControl.markAsPristine();
       this.artistFieldControl.markAsUntouched();
       this.titleFieldControl.setValue(null, { emitEvent: false });
 
-      // this.lyricsService.searchLyricsForSong(artist, title).subscribe(
-      //   result => {
-      //     this.showError = false;
-      //     this.lyricsFound = result.found;
-      //     this.lyrics = result.lyrics;
-      //   },
-      //   _ => {
-      //     this.showError = true;
-      //   }
-      // );
+      this.formSubmitted.emit(searchCriteria);
     }
   }
 
   get isSubmitButtonDisabled() {
-    // return this.isLoading || this.lyricsFormGroup.invalid;
-    return true;
+    return false;
   }
 
   // private toggleFields() {

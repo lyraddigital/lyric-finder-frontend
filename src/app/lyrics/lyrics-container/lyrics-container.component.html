@@ -1,5 +1,6 @@
 <div id="main-screen">
-  <app-lyrics-search-form></app-lyrics-search-form>
+  <app-lyrics-search-form
+    (formSubmitted)="performSearch($event)"></app-lyrics-search-form>
   <div id="results">
     <ng-container *ngIf="$fetchLyrics">
       <ng-container *ngIf="$fetchLyrics | async as fetchResult; else loading">
