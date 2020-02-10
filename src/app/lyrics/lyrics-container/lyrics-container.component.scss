@@ -1,0 +1,24 @@
+:host {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+}
+
+#results {
+    flex: 1 0 0;
+    margin-top: 16px;
+    overflow-y: scroll;
+}
+
+@media (orientation: landscape) {
+    :host {
+        flex-direction: row;
+    }
+
+    #results {
+        margin-top: 0;
+        margin-left: 16px;
+    }
+}

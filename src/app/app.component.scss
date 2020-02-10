@@ -9,37 +9,3 @@
     font-size: 1.5em;
     line-height: 0.85em;
 }
-
-form, #main-screen {
-    display: flex;
-    flex-direction: column;
-}
-
-#main-screen {  
-    padding: 16px;
-    gap: 16px;
-}
-
-#main-screen, #results {
-    flex: 1 0 0;
-}
-
-#results {
-    margin-top: 16px;
-    overflow-y: scroll;
-}
-
-@media (orientation: landscape) {
-    #main-screen {
-        flex-direction: row;
-    }
-
-    form {
-        flex: 1 0 0;
-    }
-
-    #results {
-        margin-top: 0;
-        margin-left: 16px;
-    }
-}

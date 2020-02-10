@@ -1,0 +1,10 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (orientation: landscape) {
+    form {
+        flex: 1 0 0;
+    }
+}
