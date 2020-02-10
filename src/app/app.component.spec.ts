@@ -1,9 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
+import { LyricsModule } from 'src/app/lyrics';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatToolbarModule,
+        MatIconModule,
+        LyricsModule
+      ],
       declarations: [
         AppComponent
       ],
@@ -13,19 +23,28 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'sample-lyric-app'`, () => {
+  it(`should contain the component 'app-lyrics-container'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('sample-lyric-app');
+    const lyricsContainerDe = fixture.debugElement.query(By.css('app-lyrics-container'));
+
+    expect(lyricsContainerDe).toBeTruthy();
   });
 
-  it('should render title', () => {
+  it('should show correct title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('sample-lyric-app app is running!');
+    const titleTextDe = fixture.debugElement.query(By.css('mat-toolbar span'));
+
+    expect(titleTextDe.nativeElement.textContent).toContain('Lyrics Finder');
+  });
+
+  it('should show the correct icon in the toolbar', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const toolbarIcon = fixture.debugElement.query(By.css('mat-toolbar mat-icon'));
+
+    expect(toolbarIcon.nativeElement.textContent).toContain('queue_music');
   });
 });
