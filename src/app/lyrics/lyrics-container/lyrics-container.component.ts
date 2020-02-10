@@ -13,9 +13,7 @@ import { LyricsSearchCriteria, LyricResult } from 'src/app/lyrics/models';
 export class LyricsContainerComponent {
   $fetchLyrics: Observable<FetchResult<LyricResult>>;
 
-  constructor(
-    private readonly lyricsService: LyricsService
-  ) {}
+  constructor(private readonly lyricsService: LyricsService) {}
 
   performSearch(searchCriteria: LyricsSearchCriteria) {
     this.$fetchLyrics = this.lyricsService.searchLyricsForSong(searchCriteria.artist, searchCriteria.title);
