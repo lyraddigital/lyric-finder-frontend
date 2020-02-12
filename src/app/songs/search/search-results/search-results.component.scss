@@ -6,7 +6,7 @@
         list-style: none;
         flex: 1 0 0;
         padding: 8px 0;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 }
 
@@ -20,7 +20,7 @@
             grid-gap: 16px;
             justify-content: center;
             align-content: start;
-            grid-template-columns: repeat(auto-fit, 210px);
+            grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
         }
     }
 }

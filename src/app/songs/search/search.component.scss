@@ -28,5 +28,13 @@
         .side-bar {
             display: block;
         }
+
+        main {
+            grid-template-rows: max-content 1fr 48px;
+
+            .main-section {
+                background: #121212;;
+            }
+        }
     }
 }

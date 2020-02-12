@@ -1,5 +1,6 @@
 form {
     display: flex;
+    align-items: center;
     background: #535353;
 
     > svg {
@@ -12,7 +13,6 @@ form {
     > input {
         flex: 1 0 0;
         background: transparent;
-        margin: 12px 0;
         font-size: 1.6rem;
         border: 1px solid transparent;
         outline: none;
@@ -20,6 +20,26 @@ form {
 
         &::placeholder {
             color: #FFF;
+        }
+    }
+}
+
+@media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
+    form {
+        background: transparent;
+        padding: 16px 24px;
+
+        > input {
+            color: #000;
+            font-size: 1.4rem;
+            flex: 0 0 360px;
+            padding: 6px 48px;
+            background: #FFF;
+            border-radius: 500px;
+
+            &::placeholder {
+                color: #898989; 
+            }
         }
     }
 }
