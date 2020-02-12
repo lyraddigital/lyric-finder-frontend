@@ -15,10 +15,22 @@ export class LyricsService {
   ) {}
 
   searchLyricsForSong(artist: string, title: string): Observable<FetchResult<LyricResult>> {
-    return this.http.get<LyricApiResult>(`${artist}/${title}`).pipe(
-      map(result => this.formatLyricsToMarkup(result.lyrics)),
+    return this.http.get('https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem', {
+      headers: {
+        'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
+        'x-rapidapi-key': '5bbc7ff12amsh9cc0cf2626ff24ep157130jsn49b474194ca6'
+      }
+    }).pipe(
+      map(res => {
+        console.log(res);
+        return ({ success: false, result: undefined, errorMessage: 'testing' });
+      }),
       catchError(this.handleError)
     );
+    // return this.http.get<LyricApiResult>(`${artist}/${title}`).pipe(
+    //   map(result => this.formatLyricsToMarkup(result.lyrics)),
+    //   catchError(this.handleError)
+    // );
   }
 
   private formatLyricsToMarkup(unformattedLyrics: string): FetchResult<LyricResult> {

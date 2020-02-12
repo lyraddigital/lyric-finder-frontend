@@ -1,0 +1,25 @@
+form {
+    display: flex;
+    background: #535353;
+
+    > svg {
+        padding: 12px;
+        color: #FFF;
+        width: 48px;
+        height: 48px;
+    }
+
+    > input {
+        flex: 1 0 0;
+        background: transparent;
+        margin: 12px 0;
+        font-size: 1.6rem;
+        border: 1px solid transparent;
+        outline: none;
+        color: #FFF;
+
+        &::placeholder {
+            color: #FFF;
+        }
+    }
+}

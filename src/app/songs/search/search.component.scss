@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+    flex: 1 0 0;
+
+    .side-bar {
+        display: none;
+        background: #000;
+    }
+    
+    main {
+        flex: 1 0 0;
+        display: grid;
+        grid-template-rows: 48px 1fr 48px;
+
+        > .main-section {
+            display: flex;
+            background: #000;
+            overflow-y: scroll;
+        }
+    }
+}
+
+@media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
+    :host {
+        display: grid;
+        grid-template-columns: 230px 1fr;
+
+        .side-bar {
+            display: block;
+        }
+    }
+}

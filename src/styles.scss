@@ -1,9 +1,30 @@
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    display: flex;
-    flex-direction: column;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css"
+html, body {
+    height: 100%;
+}
+
+html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    background: #121212;
+}
+
+body {
+    display: flex;
+    color: #FFF;
+}
+
+// html, body { height: 100%; }
+// body { 
+//     margin: 0;
+//     font-family: Roboto, "Helvetica Neue", sans-serif;
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css"

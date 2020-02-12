@@ -1,0 +1,38 @@
+footer {
+    display: flex;
+    background: #282828;
+    border-top: 1px solid #535353;
+
+    > .menu-item {
+        flex: 1 0 0;
+        display: flex;
+        justify-content: center;
+
+        > div {
+            display: flex;
+            color: #b3b3b3;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 0 8px;
+            padding-top: 4px;
+            padding-bottom: 2px;
+
+            &:focus {
+                color: #FFF;
+                background: #535353;
+                font-weight: 600;
+            }
+
+            > svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            > span {
+                font-size: 1.1rem;
+                line-height: 1.6rem;
+            }
+        }
+    }
+}

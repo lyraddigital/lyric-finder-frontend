@@ -1,0 +1,26 @@
+:host {
+    flex: 1 0 0;
+    display: flex;
+    
+    > .song-list {
+        list-style: none;
+        flex: 1 0 0;
+        padding: 8px 0;
+        overflow-y: scroll;
+    }
+}
+
+@media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
+    :host {
+        padding: 32px;
+
+        .song-list {
+            display: grid;
+            padding: 0;
+            grid-gap: 16px;
+            justify-content: center;
+            align-content: start;
+            grid-template-columns: repeat(auto-fit, 210px);
+        }
+    }
+}

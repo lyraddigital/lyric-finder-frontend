@@ -1,0 +1,53 @@
+:host {
+    display: flex;
+    flex: 1 0 0;
+    align-items: center;
+    background: linear-gradient(
+        190deg, 
+        rgba(87, 193, 235, 1) 0%, 
+        rgba(36, 111, 168, 0.5) 45%, 
+        rgba(0, 0, 0, 0) 75%
+    );
+
+    > section {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 0;
+        text-align: center;
+
+        > h1 {
+            font-size: 4rem;
+            line-height: 4rem;
+            margin-bottom: 6px;
+        }
+
+        > p {
+            margin: 0 32px;
+            font-weight: 600;
+            font-size: 1.55rem;
+            line-height: 2.4rem;
+        }
+
+        > .button-container {
+            display: flex;
+            justify-content: center;
+
+            > button {
+                flex: 1 0 0;
+                margin: 0 16px;
+                margin-top: 32px;
+                height: 48px;
+                border: 1px solid rgba(0, 0, 0, 0);
+                border-radius: 4px;
+                background: #FFF;
+                outline: none;
+                max-width: 500px;
+    
+                > span {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
