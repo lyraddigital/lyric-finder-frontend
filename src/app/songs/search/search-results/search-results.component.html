@@ -1,7 +1,9 @@
-<ul class="song-list">
-    <li *ngFor="let result of searchResults">
-        <app-search-result-item
-            [searchResult]="result">
-        </app-search-result-item>
-    </li>
-</ul>
+<ng-container *ngIf="searchResults$ | async as searchResults">
+    <ul class="song-list">
+        <li *ngFor="let result of searchResults">
+            <app-search-result-item
+                [searchResult]="result">
+            </app-search-result-item>
+        </li>
+    </ul>
+</ng-container>
