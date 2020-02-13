@@ -2,7 +2,7 @@
     Side Bar
 </aside>
 <main>
-    <app-search-form></app-search-form>
+    <app-search-form (searchTermUpdated)="performSearch($event)"></app-search-form>
     <div class="main-section">
         <!-- <app-search-start></app-search-start> -->
         <app-search-results></app-search-results>
