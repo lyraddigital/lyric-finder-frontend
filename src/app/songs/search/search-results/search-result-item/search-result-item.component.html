@@ -1,5 +1,10 @@
 <article>
-    <img [src]="searchResult.smallThumbnailSrc" />
+    <picture>
+        <source [srcset]="searchResult.largeThumbnailSrc"
+                media="(min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape)">
+        <img [src]="searchResult.smallThumbnailSrc" />
+    </picture>
+    
     <div>
         <h3>{{ searchResult.songTitle }}</h3>
         <p class="artist">{{ searchResult.artist }}</p>
