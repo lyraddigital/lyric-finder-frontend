@@ -1,5 +1,6 @@
 export interface SearchResultItem {
-    thumbnailUrl: string;
+    smallThumbnailSrc: string;
+    largeThumbnailSrc: string;
     artist: string;
     songTitle: string;
 }
