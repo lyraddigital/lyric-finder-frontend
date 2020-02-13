@@ -15,6 +15,7 @@ import { SearchResultsComponent } from './songs/search/search-results/search-res
 import { SearchResultItemComponent } from './songs/search/search-results/search-result-item/search-result-item.component';
 import { ActionButtonsComponent } from './shared/layout/action-buttons/action-buttons.component';
 import { SearchFormComponent } from './songs/search/search-form/search-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SearchFormComponent } from './songs/search/search-form/search-form.comp
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     ApiModule.configureApiUrl(environment.lyricApiEndpoint),

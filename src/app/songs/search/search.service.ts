@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 import { SearchResultItem } from './models/search-result-item';
 
@@ -11,13 +11,16 @@ import { SearchResultItem } from './models/search-result-item';
 export class SearchService {
   constructor(private httpClient: HttpClient) {}
 
-  getSearchResults(): Observable<Array<SearchResultItem>> {
-    return this.httpClient.get('https://deezerdevs-deezer.p.rapidapi.com/search?q=Britney+Spears', {
+  getSearchResults(searchTerm: string): Observable<Array<SearchResultItem>> {
+    const query = encodeURIComponent(searchTerm);
+
+    return this.httpClient.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}`, {
       headers: {
         'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com',
         'X-RapidAPI-Key': '5bbc7ff12amsh9cc0cf2626ff24ep157130jsn49b474194ca6'
       }
     }).pipe(
+      take(1),
       map((response: any) => {
         if (!response || !response.data) {
           return []
