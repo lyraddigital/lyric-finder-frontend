@@ -36,12 +36,16 @@ form {
             height: 40px;
             flex: 0 0 360px;
             padding: 6px 48px;
-            background: #FFF;
+            background: url('/assets/images/icons/tablet/magnify.svg') #FFF;
             border-radius: 500px;
 
             &::placeholder {
                 color: #898989; 
             }
+        }
+
+        > svg:last-of-type {
+            display: none;
         }
     }
 }
