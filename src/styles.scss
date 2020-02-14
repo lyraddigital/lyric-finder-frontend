@@ -12,11 +12,17 @@ html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 10px;
     background: #121212;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
 }
 
 body {
     display: flex;
     color: #FFF;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 // html, body { height: 100%; }
