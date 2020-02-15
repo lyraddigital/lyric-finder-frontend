@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
@@ -11,6 +11,7 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 export class SearchFormComponent implements OnInit, OnDestroy {
   @Output() searchTermUpdated = new EventEmitter<string>();
   formGroup: FormGroup;
+  private searchTermFormControl: AbstractControl;
   private componentDestroyed$: Subject<any>;
 
   constructor(private readonly formBuilder: FormBuilder) { }
@@ -21,18 +22,26 @@ export class SearchFormComponent implements OnInit, OnDestroy {
       searchTerm: ['']
     });
 
-    this.formGroup.get('searchTerm').valueChanges.pipe(
+    this.searchTermFormControl = this.formGroup.get('searchTerm');
+
+    this.searchTermFormControl.valueChanges.pipe(
       takeUntil(this.componentDestroyed$),
       debounceTime(250),
     ).subscribe(value => {
-        if (value) {
-          this.searchTermUpdated.emit(value);
-        }
+      this.searchTermUpdated.emit(value);
     });
   }
 
   ngOnDestroy(): void {
     this.componentDestroyed$.next();
     this.componentDestroyed$.complete();
+  }
+
+  clearSearch() {
+    this.formGroup.reset();
+  }
+
+  get searchBeingPerformed() {
+    return this.searchTermFormControl.value && this.searchTermFormControl.value.length > 0;
   }
 }

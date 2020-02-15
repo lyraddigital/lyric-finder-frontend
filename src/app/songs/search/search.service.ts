@@ -14,16 +14,11 @@ export class SearchService {
   getSearchResults(searchTerm: string): Observable<Array<SearchResultItem>> {
     const query = encodeURIComponent(searchTerm);
 
-    return this.httpClient.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}`, {
-      headers: {
-        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com',
-        'X-RapidAPI-Key': '5bbc7ff12amsh9cc0cf2626ff24ep157130jsn49b474194ca6'
-      }
-    }).pipe(
+    return this.httpClient.get(`/search?q=${query}`).pipe(
       take(1),
       map((response: any) => {
         if (!response || !response.data) {
-          return []
+          return [];
         }
 
         return response.data.map(r => ({
@@ -34,44 +29,5 @@ export class SearchService {
         }));
       })
     );
-
-    // return of([
-    //   {
-    //     songTitle: 'Toxic',
-    //     artist: 'Britney Spears',
-    //     smallThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/8a2b95cda407d004d829831d20e2e20b/56x56-000000-80-0-0.jpg',
-    //     largeThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/250x250-000000-80-0-0.jpg'
-    //   },
-    //   {
-    //     songTitle: 'Toxic',
-    //     artist: 'Britney Spears',
-    //     smallThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/8a2b95cda407d004d829831d20e2e20b/56x56-000000-80-0-0.jpg',
-    //     largeThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/250x250-000000-80-0-0.jpg'
-    //   },
-    //   {
-    //     songTitle: 'Toxic',
-    //     artist: 'Britney Spears',
-    //     smallThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/8a2b95cda407d004d829831d20e2e20b/56x56-000000-80-0-0.jpg',
-    //     largeThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/250x250-000000-80-0-0.jpg'
-    //   },
-    //   {
-    //     songTitle: 'Toxic',
-    //     artist: 'Britney Spears',
-    //     smallThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/8a2b95cda407d004d829831d20e2e20b/56x56-000000-80-0-0.jpg',
-    //     largeThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/250x250-000000-80-0-0.jpg'
-    //   },
-    //   {
-    //     songTitle: 'Toxic',
-    //     artist: 'Britney Spears',
-    //     smallThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/8a2b95cda407d004d829831d20e2e20b/56x56-000000-80-0-0.jpg',
-    //     largeThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/250x250-000000-80-0-0.jpg'
-    //   },
-    //   {
-    //     songTitle: 'Toxic',
-    //     artist: 'Britney Spears',
-    //     smallThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/8a2b95cda407d004d829831d20e2e20b/56x56-000000-80-0-0.jpg',
-    //     largeThumbnailSrc: 'https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/250x250-000000-80-0-0.jpg'
-    //   }
-    // ]);
   }
 }

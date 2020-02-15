@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { ApiModule } from 'src/app/api';
-import { LyricsModule } from 'src/app/lyrics';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
@@ -30,11 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    MatToolbarModule,
-    MatIconModule,
-    ApiModule.configureApiUrl(environment.lyricApiEndpoint),
-    LyricsModule,
+    ApiModule.configureApiUrl(environment.deezerRapidApiDomainName, environment.deezerRapidApiKey),
     AppRoutingModule
   ],
   bootstrap: [AppComponent]

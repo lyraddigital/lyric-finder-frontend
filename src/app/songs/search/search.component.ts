@@ -11,10 +11,12 @@ import { SearchResultItem } from './models/search-result-item';
 })
 export class SearchComponent {
   searchResults$: Observable<Array<SearchResultItem>>;
+  emptySearch = true;
 
   constructor(private searchService: SearchService) { }
 
   performSearch(searchTerm: string) {
+    this.emptySearch = !searchTerm || searchTerm.length === 0;
     this.searchResults$ = this.searchService.getSearchResults(searchTerm);
   }
 }

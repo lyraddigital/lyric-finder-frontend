@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  lyricApiEndpoint: 'https://private-anon-df80aa11f9-lyricsovh.apiary-proxy.com/v1'
+  deezerRapidApiDomainName: 'deezerdevs-deezer.p.rapidapi.com',
+  deezerRapidApiKey: '5bbc7ff12amsh9cc0cf2626ff24ep157130jsn49b474194ca6'
 };
 
 /*

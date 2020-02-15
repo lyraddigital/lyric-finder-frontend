@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { SearchResultItem } from 'src/app/songs/search/models/search-result-item';
 
@@ -9,5 +8,5 @@ import { SearchResultItem } from 'src/app/songs/search/models/search-result-item
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent {
-  @Input() searchResults$: Observable<Array<SearchResultItem>>;
+  @Input() searchResults: Array<SearchResultItem>;
 }

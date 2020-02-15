@@ -4,8 +4,14 @@
 <main>
     <app-search-form (searchTermUpdated)="performSearch($event)"></app-search-form>
     <div class="main-section">
-        <!-- <app-search-start></app-search-start> -->
-        <app-search-results [searchResults$]="searchResults$"></app-search-results>
+        <ng-container *ngIf="emptySearch; else searchResults">
+            <app-search-start></app-search-start>
+        </ng-container>
+        <ng-template #searchResults>
+            <ng-container *ngIf="searchResults$ | async as searchResults;">
+                <app-search-results [searchResults]="searchResults"></app-search-results>
+            </ng-container>
+        </ng-template>
     </div>
     <footer>
         <app-action-buttons></app-action-buttons>
