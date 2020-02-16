@@ -6,7 +6,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.scss']
 })
-export class SplashComponent implements OnInit, OnDestroy { 
+export class SplashComponent implements OnInit, OnDestroy {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private routerService: Router
@@ -20,7 +20,7 @@ export class SplashComponent implements OnInit, OnDestroy {
           this.navigateToSearchPage();
         }
       }
-    )
+    );
   }
 
   navigateToSearchPage() {

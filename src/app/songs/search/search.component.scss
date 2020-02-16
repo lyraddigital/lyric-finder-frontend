@@ -17,6 +17,14 @@
             display: flex;
             background: #000;
             overflow-y: hidden;
+
+            > .loading-div {
+                flex: 1 0 0;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                margin-top: 40px;
+            }
         }
     }
 }
@@ -27,7 +35,15 @@
         grid-template-columns: 100px 1fr;
 
         .side-bar {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+            > picture > img {
+                margin-top: 16px;
+                width: 45px;
+            }
         }
 
         main {
@@ -47,5 +63,15 @@
 @media (min-width: 1024px) {
     :host {
         grid-template-columns: 230px 1fr;
+
+        .side-bar {
+            align-items: flex-start;
+
+            > picture > img {
+                margin-top: 24px;
+                margin-left: 24px;
+                width: 131px;
+            }
+        }
     }
 }

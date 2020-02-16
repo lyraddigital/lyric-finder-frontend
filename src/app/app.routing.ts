@@ -13,7 +13,7 @@ import { SearchComponent } from './songs/search/search.component';
         },
         {
             path: 'search',
-            component: SearchComponent
+            loadChildren: () => import('src/app/songs/search/search.module').then(m => m.SearchModule)
         },
         {
             path: '**',

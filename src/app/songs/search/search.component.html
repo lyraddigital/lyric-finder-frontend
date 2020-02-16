@@ -1,5 +1,8 @@
 <aside class="side-bar">
-    Side Bar
+    <picture>
+        <source srcset="assets/images/icons/home/home.svg" media="(min-width: 1024px)" />
+        <img src="assets/images/icons/home/home-small.svg" />
+    </picture>
 </aside>
 <main>
     <app-search-form (searchTermUpdated)="performSearch($event)"></app-search-form>
@@ -8,9 +11,14 @@
             <app-search-start></app-search-start>
         </ng-container>
         <ng-template #searchResults>
-            <ng-container *ngIf="searchResults$ | async as searchResults;">
+            <ng-container *ngIf="searchResults$ | async as searchResults; else loading;">
                 <app-search-results [searchResults]="searchResults"></app-search-results>
             </ng-container>
+            <ng-template #loading>
+                <div class="loading-div">
+                    <img src="assets/images/icons/common/loading.svg" />
+                </div>
+            </ng-template>
         </ng-template>
     </div>
     <footer>
