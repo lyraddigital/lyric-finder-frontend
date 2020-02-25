@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { SearchService } from './search.service';
@@ -13,10 +14,18 @@ export class SearchComponent {
   searchResults$: Observable<Array<SearchResultItem>>;
   emptySearch = true;
 
-  constructor(private searchService: SearchService) { }
+  constructor(
+    private searchService: SearchService,
+    private router: Router
+  ) { }
 
   performSearch(searchTerm: string) {
     this.emptySearch = !searchTerm || searchTerm.length === 0;
+
+    if (!this.emptySearch) {
+      this.router.navigateByUrl(`/search/${searchTerm}`);
+    }
+
     this.searchResults$ = this.searchService.getSearchResults(searchTerm);
   }
 }
