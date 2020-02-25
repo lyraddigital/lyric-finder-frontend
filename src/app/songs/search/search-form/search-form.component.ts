@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-form',
@@ -26,7 +26,6 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
     this.searchTermFormControl.valueChanges.pipe(
       takeUntil(this.componentDestroyed$),
-      debounceTime(250),
     ).subscribe(value => {
       this.searchTermUpdated.emit(value);
     });

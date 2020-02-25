@@ -21,10 +21,7 @@ export class SearchComponent {
 
   performSearch(searchTerm: string) {
     this.emptySearch = !searchTerm || searchTerm.length === 0;
-
-    if (!this.emptySearch) {
-      this.router.navigateByUrl(`/search/${searchTerm}`);
-    }
+    this.router.navigateByUrl(`/search/${searchTerm}`);
 
     this.searchResults$ = this.searchService.getSearchResults(searchTerm);
   }
