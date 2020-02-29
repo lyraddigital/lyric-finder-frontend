@@ -22,25 +22,8 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.componentDestroyed$ = new Subject<any>();
-    this.formGroup = this.formBuilder.group({
-      searchTerm: ['']
-    });
-
-    this.searchTermFormControl = this.formGroup.get('searchTerm');
-
-    this.activatedRoute.params.pipe(
-      take(1),
-    ).subscribe(p => {
-      if (p && p.searchTerm) {
-        this.searchTermFormControl.setValue(p.searchTerm, { emitEvent: false });
-      }
-    });
-
-    this.searchTermFormControl.valueChanges.pipe(
-      takeUntil(this.componentDestroyed$),
-    ).subscribe(value => {
-      this.searchTermUpdated.emit(value);
-    });
+    this.configureForm();
+    this.updateSearchFieldOnLoad();
   }
 
   ngOnDestroy(): void {
@@ -54,5 +37,29 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   get searchBeingPerformed(): boolean {
     return this.searchTermFormControl.value && this.searchTermFormControl.value.length > 0;
+  }
+
+  private configureForm(): void {
+    this.formGroup = this.formBuilder.group({
+      searchTerm: ['']
+    });
+
+    this.searchTermFormControl = this.formGroup.get('searchTerm');
+
+    this.searchTermFormControl.valueChanges.pipe(
+      takeUntil(this.componentDestroyed$),
+    ).subscribe(value => {
+      this.searchTermUpdated.emit(value);
+    });
+  }
+
+  private updateSearchFieldOnLoad(): void {
+    this.activatedRoute.params.pipe(
+      take(1),
+    ).subscribe(p => {
+      if (p && p.searchTerm) {
+        this.searchTermFormControl.setValue(p.searchTerm, { emitEvent: false });
+      }
+    });
   }
 }
