@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared';
 import { SearchRoutingModule } from './search.routing.module';
 import { SearchComponent } from './search.component';
-import { SearchStartComponent } from './search-start';
 import { SearchFormComponent } from './search-form';
 import {
+  SearchStartComponent,
   SearchResultListComponent,
   SearchResultItemComponent,
   SearchResultsContainerComponent

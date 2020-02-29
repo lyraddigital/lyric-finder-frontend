@@ -1,5 +1,5 @@
 <ng-container *ngIf="emptySearch; else searchResults">
-    <ldsc-search-start></ldsc-search-start>
+    <ldsc-search-result-info></ldsc-search-result-info>
 </ng-container>
 <ng-template #searchResults>
     <ng-container *ngIf="searchResults$ | async as searchResults; else loading;">
