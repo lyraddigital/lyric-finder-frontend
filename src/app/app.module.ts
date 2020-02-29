@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { ApiModule } from 'src/app/api';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { SplashComponent } from './splash/splash.component';
+import { SplashComponent } from 'src/app/splash';
 
 @NgModule({
   declarations: [

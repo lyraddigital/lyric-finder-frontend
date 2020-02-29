@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
-import { SearchResultItem } from './models/search-result-item';
+import { SearchResultItem } from './models';
 
 @Injectable({
   providedIn: 'root'

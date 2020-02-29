@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SearchResultsContainerComponent } from './search-results/search-results-container/search-results-container.component';
+import { SearchResultsContainerComponent } from './search-results';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-        {
-            path: '',
-            component: SearchResultsContainerComponent,
-            outlet: 'search-results'
-        }
+      {
+        path: '',
+        component: SearchResultsContainerComponent,
+        outlet: 'search-results'
+      }
     ])
   ],
   exports: [
-      RouterModule
+    RouterModule
   ]
 })
 export class SearchRoutingModule { }

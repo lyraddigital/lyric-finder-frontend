@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from 'src/app/shared';
 import { SearchRoutingModule } from './search.routing.module';
-import { SearchComponent } from 'src/app/search/search.component';
-import { SearchStartComponent } from 'src/app/search/search-start/search-start.component';
-import { SearchResultListComponent } from 'src/app/search/search-results/search-result-list/search-result-list.component';
-import { SearchResultItemComponent } from 'src/app/search/search-results/search-result-item/search-result-item.component';
-import { SearchFormComponent } from 'src/app/search/search-form/search-form.component';
-import { SearchResultsContainerComponent } from 'src/app/search/search-results/search-results-container/search-results-container.component';
+import { SearchComponent } from './search.component';
+import { SearchStartComponent } from './search-start';
+import { SearchFormComponent } from './search-form';
+import {
+  SearchResultListComponent,
+  SearchResultItemComponent,
+  SearchResultsContainerComponent
+} from './search-results';
 
 @NgModule({
   declarations: [

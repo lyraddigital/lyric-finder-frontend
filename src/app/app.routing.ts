@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SplashComponent } from './splash/splash.component';
-import { SearchComponent } from './search/search.component';
+import { SplashComponent } from 'src/app/splash';
+import { SearchComponent } from 'src/app/search';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { SearchComponent } from './search/search.component';
         {
             path: '',
             redirectTo: '/search/',
-            pathMatch: 'prefix'
+            pathMatch: 'full'
         }
     ])
   ],

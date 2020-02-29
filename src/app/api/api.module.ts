@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HTTP_INTERCEPTORS  } from '@angular/common/http';
 
-import { API_KEY, API_DOMAIN_NAME, BaseUrlInterceptor } from 'src/app/api/utils';
+import { API_KEY, API_DOMAIN_NAME, BaseUrlInterceptor } from './utils';
 
 @NgModule({})
 export class ApiModule {

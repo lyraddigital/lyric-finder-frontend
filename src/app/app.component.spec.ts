@@ -1,19 +1,11 @@
 import { TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 
-import { LyricsModule } from 'src/app/lyrics';
 import { AppComponent } from './app.component';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MatToolbarModule,
-        MatIconModule,
-        LyricsModule
-      ],
       declarations: [
         AppComponent
       ],

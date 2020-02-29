@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ActionButtonsComponent } from './layout/action-buttons/action-buttons.component';
+import { ActionButtonsComponent } from './layout';
 
 @NgModule({
   declarations: [
