@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'ldsc-search-form',
@@ -27,6 +27,14 @@ export class SearchFormComponent implements OnInit, OnDestroy {
     });
 
     this.searchTermFormControl = this.formGroup.get('searchTerm');
+
+    this.activatedRoute.params.pipe(
+      take(1),
+    ).subscribe(p => {
+      if (p && p.searchTerm) {
+        this.searchTermFormControl.setValue(p.searchTerm, { emitEvent: false });
+      }
+    });
 
     this.searchTermFormControl.valueChanges.pipe(
       takeUntil(this.componentDestroyed$),
