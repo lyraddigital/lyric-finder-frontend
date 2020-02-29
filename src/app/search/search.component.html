@@ -5,11 +5,11 @@
     </picture>
 </aside>
 <main>
-    <app-search-form (searchTermUpdated)="performSearch($event)"></app-search-form> 
+    <ldsc-search-form (searchTermUpdated)="performSearch($event)"></ldsc-search-form> 
     <div class="main-section">
         <router-outlet name="search-results"></router-outlet>
     </div>
     <footer>
-        <app-action-buttons></app-action-buttons>
+        <ldsc-action-buttons></ldsc-action-buttons>
     </footer>
 </main>

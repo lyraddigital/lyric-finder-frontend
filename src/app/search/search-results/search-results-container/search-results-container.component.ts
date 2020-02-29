@@ -7,7 +7,6 @@ import { SearchService } from '../../search.service';
 import { SearchResultItem } from '../../models';
 
 @Component({
-  selector: 'app-search-results-container',
   templateUrl: './search-results-container.component.html',
   styleUrls: ['./search-results-container.component.scss']
 })

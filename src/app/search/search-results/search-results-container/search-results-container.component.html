@@ -1,9 +1,9 @@
 <ng-container *ngIf="emptySearch; else searchResults">
-    <app-search-start></app-search-start>
+    <ldsc-search-start></ldsc-search-start>
 </ng-container>
 <ng-template #searchResults>
     <ng-container *ngIf="searchResults$ | async as searchResults; else loading;">
-        <app-search-result-list [searchResults]="searchResults"></app-search-result-list>
+        <ldsc-search-result-list [searchResults]="searchResults"></ldsc-search-result-list>
     </ng-container>
     <ng-template #loading>
         <div class="loading-div">

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sample-lyric-app": {
+    "lyric-finder": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -12,12 +12,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "ldsc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sample-lyric-app",
+            "outputPath": "dist/lyric-finder",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sample-lyric-app:build"
+            "browserTarget": "lyric-finder:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sample-lyric-app:build:production"
+              "browserTarget": "lyric-finder:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sample-lyric-app:build"
+            "browserTarget": "lyric-finder:build"
           }
         },
         "test": {
@@ -115,16 +115,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sample-lyric-app:serve"
+            "devServerTarget": "lyric-finder:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sample-lyric-app:serve:production"
+              "devServerTarget": "lyric-finder:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "sample-lyric-app"
+  "defaultProject": "lyric-finder"
 }

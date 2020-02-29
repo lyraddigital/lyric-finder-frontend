@@ -19,9 +19,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should contain the component 'app-lyrics-container'`, () => {
+  it(`should contain the component 'ldsc-lyrics-container'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const lyricsContainerDe = fixture.debugElement.query(By.css('app-lyrics-container'));
+    const lyricsContainerDe = fixture.debugElement.query(By.css('ldsc-lyrics-container'));
 
     expect(lyricsContainerDe).toBeTruthy();
   });

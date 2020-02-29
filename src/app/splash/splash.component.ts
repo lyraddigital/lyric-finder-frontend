@@ -36,7 +36,7 @@ export class SplashComponent implements OnInit, OnDestroy {
     this.componentDestroyed$.complete();
   }
 
-  private navigateToSearchPage() {
+  navigateToSearchPage(): void {
     this.routerService.navigateByUrl('/search/');
   }
 }

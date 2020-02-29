@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-search-form',
+  selector: 'ldsc-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss']
 })
@@ -40,11 +40,11 @@ export class SearchFormComponent implements OnInit, OnDestroy {
     this.componentDestroyed$.complete();
   }
 
-  clearSearch() {
+  clearSearch(): void {
     this.formGroup.reset();
   }
 
-  get searchBeingPerformed() {
+  get searchBeingPerformed(): boolean {
     return this.searchTermFormControl.value && this.searchTermFormControl.value.length > 0;
   }
 }

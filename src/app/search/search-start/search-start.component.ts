@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-search-start',
+  selector: 'ldsc-search-start',
   templateUrl: './search-start.component.html',
   styleUrls: ['./search-start.component.scss']
 })
