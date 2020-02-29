@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    flex: 1 0 0;
+
+    > .loading-div {
+        flex: 1 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 40px;
+    }
+}

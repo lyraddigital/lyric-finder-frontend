@@ -8,8 +8,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class SplashComponent implements OnInit, OnDestroy {
   constructor(
-    private breakpointObserver: BreakpointObserver,
-    private routerService: Router
+    private readonly breakpointObserver: BreakpointObserver,
+    private readonly routerService: Router
   ) { }
 
   ngOnInit() {

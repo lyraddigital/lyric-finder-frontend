@@ -1,0 +1,13 @@
+<ng-container *ngIf="emptySearch; else searchResults">
+    <app-search-start></app-search-start>
+</ng-container>
+<ng-template #searchResults>
+    <ng-container *ngIf="searchResults$ | async as searchResults; else loading;">
+        <app-search-result-list [searchResults]="searchResults"></app-search-result-list>
+    </ng-container>
+    <ng-template #loading>
+        <div class="loading-div">
+            <img src="assets/images/icons/common/loading.svg" />
+        </div>
+    </ng-template>
+</ng-template>

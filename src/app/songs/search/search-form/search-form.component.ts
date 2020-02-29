@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,7 +15,10 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   private searchTermFormControl: AbstractControl;
   private componentDestroyed$: Subject<any>;
 
-  constructor(private readonly formBuilder: FormBuilder) { }
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.componentDestroyed$ = new Subject<any>();

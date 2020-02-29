@@ -17,14 +17,6 @@
             display: flex;
             background: #000;
             overflow-y: hidden;
-
-            > .loading-div {
-                flex: 1 0 0;
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                margin-top: 40px;
-            }
         }
     }
 }

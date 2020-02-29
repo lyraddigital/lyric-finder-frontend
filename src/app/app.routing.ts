@@ -12,17 +12,19 @@ import { SearchComponent } from './songs/search/search.component';
             component: SplashComponent
         },
         {
-            path: 'search',
-            loadChildren: () => import('src/app/songs/search/search.module').then(m => m.SearchModule)
+            path: 'search/:searchTerm',
+            component: SearchComponent,
+            loadChildren: () => import('src/app/songs/search/search.module').then(m => m.SearchModule),
         },
         {
-            path: '**',
-            component: SearchComponent
+            path: '',
+            redirectTo: '/search/',
+            pathMatch: 'prefix'
         }
     ])
   ],
   exports: [
-      RouterModule
+    RouterModule
   ]
 })
 export class AppRoutingModule { }

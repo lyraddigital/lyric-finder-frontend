@@ -5,21 +5,9 @@
     </picture>
 </aside>
 <main>
-    <app-search-form (searchTermUpdated)="performSearch($event)"></app-search-form>
+    <app-search-form (searchTermUpdated)="performSearch($event)"></app-search-form> 
     <div class="main-section">
-        <ng-container *ngIf="emptySearch; else searchResults">
-            <app-search-start></app-search-start>
-        </ng-container>
-        <ng-template #searchResults>
-            <ng-container *ngIf="searchResults$ | async as searchResults; else loading;">
-                <app-search-results [searchResults]="searchResults"></app-search-results>
-            </ng-container>
-            <ng-template #loading>
-                <div class="loading-div">
-                    <img src="assets/images/icons/common/loading.svg" />
-                </div>
-            </ng-template>
-        </ng-template>
+        <router-outlet name="search-results"></router-outlet>
     </div>
     <footer>
         <app-action-buttons></app-action-buttons>
