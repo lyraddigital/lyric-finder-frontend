@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { SearchService } from 'src/app/songs/search/search.service';
-import { SearchResultItem } from 'src/app/songs/search/models/search-result-item';
+import { SearchService } from 'src/app/search/search.service';
+import { SearchResultItem } from 'src/app/search/models/search-result-item';
 
 @Component({
   selector: 'app-search-results-container',

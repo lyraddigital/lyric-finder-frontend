@@ -5,12 +5,12 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SearchRoutingModule } from './search.routing.module';
-import { SearchComponent } from 'src/app/songs/search/search.component';
-import { SearchStartComponent } from 'src/app/songs/search/search-start/search-start.component';
-import { SearchResultListComponent } from 'src/app/songs/search/search-results/search-result-list/search-result-list.component';
-import { SearchResultItemComponent } from 'src/app/songs/search/search-results/search-result-item/search-result-item.component';
-import { SearchFormComponent } from 'src/app/songs/search/search-form/search-form.component';
-import { SearchResultsContainerComponent } from './search-results/search-results-container/search-results-container.component';
+import { SearchComponent } from 'src/app/search/search.component';
+import { SearchStartComponent } from 'src/app/search/search-start/search-start.component';
+import { SearchResultListComponent } from 'src/app/search/search-results/search-result-list/search-result-list.component';
+import { SearchResultItemComponent } from 'src/app/search/search-results/search-result-item/search-result-item.component';
+import { SearchFormComponent } from 'src/app/search/search-form/search-form.component';
+import { SearchResultsContainerComponent } from 'src/app/search/search-results/search-results-container/search-results-container.component';
 
 @NgModule({
   declarations: [

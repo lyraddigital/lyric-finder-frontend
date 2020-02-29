@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SplashComponent } from './splash/splash.component';
-import { SearchComponent } from './songs/search/search.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { SearchComponent } from './songs/search/search.component';
         {
             path: 'search/:searchTerm',
             component: SearchComponent,
-            loadChildren: () => import('src/app/songs/search/search.module').then(m => m.SearchModule),
+            loadChildren: () => import('src/app/search/search.module').then(m => m.SearchModule),
         },
         {
             path: '',
