@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  templateUrl: './search-page.component.html',
+  styleUrls: ['./search-page.component.scss']
 })
-export class SearchComponent {
+export class SearchPageComponent {
   constructor(private readonly router: Router) { }
 
   performSearch(searchTerm: string): void {

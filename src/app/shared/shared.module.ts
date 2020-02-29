@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ActionButtonsComponent } from './layout';
+import { LoaderComponent } from './loader';
 
 @NgModule({
   declarations: [
-    ActionButtonsComponent
+    ActionButtonsComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ActionButtonsComponent
+    ActionButtonsComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }

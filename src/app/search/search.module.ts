@@ -5,10 +5,10 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared';
 import { SearchRoutingModule } from './search.routing.module';
-import { SearchComponent } from './search.component';
+import { SearchPageComponent } from './search-page.component';
 import { SearchFormComponent } from './search-form';
 import {
-  SearchStartComponent,
+  SearchResultInfoComponent,
   SearchResultListComponent,
   SearchResultItemComponent,
   SearchResultsContainerComponent
@@ -16,8 +16,8 @@ import {
 
 @NgModule({
   declarations: [
-    SearchComponent,
-    SearchStartComponent,
+    SearchPageComponent,
+    SearchResultInfoComponent,
     SearchResultListComponent,
     SearchResultItemComponent,
     SearchFormComponent,
@@ -31,7 +31,7 @@ import {
     SearchRoutingModule
   ],
   exports: [
-    SearchComponent
+    SearchPageComponent
   ]
 })
 export class SearchModule { }
