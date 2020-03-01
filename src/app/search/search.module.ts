@@ -7,8 +7,8 @@ import { SharedModule } from 'src/app/shared';
 import { SearchRoutingModule } from './search.routing.module';
 import { SearchPageComponent } from './search-page.component';
 import { SearchFormComponent } from './search-form';
+import { SearchStartComponent } from './search-start';
 import {
-  SearchResultInfoComponent,
   SearchResultListComponent,
   SearchResultItemComponent,
   SearchResultsContainerComponent
@@ -17,7 +17,7 @@ import {
 @NgModule({
   declarations: [
     SearchPageComponent,
-    SearchResultInfoComponent,
+    SearchStartComponent,
     SearchResultListComponent,
     SearchResultItemComponent,
     SearchFormComponent,

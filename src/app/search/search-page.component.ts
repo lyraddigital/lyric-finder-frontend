@@ -9,6 +9,10 @@ export class SearchPageComponent {
   constructor(private readonly router: Router) { }
 
   performSearch(searchTerm: string): void {
-    this.router.navigateByUrl(`/search/${searchTerm || '' }`);
+    if (searchTerm && searchTerm.length > 0) {
+      this.router.navigateByUrl(`/search/results/${searchTerm}`);
+    } else {
+      this.router.navigateByUrl('/search/start');
+    }
   }
 }

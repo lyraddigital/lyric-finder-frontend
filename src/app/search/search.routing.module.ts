@@ -2,14 +2,27 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SearchResultsContainerComponent } from './search-results';
+import { SearchStartComponent } from './search-start';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
-        path: '',
+        path: 'results/:searchTerm',
         component: SearchResultsContainerComponent,
-        outlet: 'search-results'
+        outlet: 'search-output'
+      },
+      {
+        path: 'start',
+        component: SearchStartComponent,
+        outlet: 'search-output',
+        pathMatch: 'full'
+      },
+      {
+        path: '',
+        component: SearchStartComponent,
+        outlet: 'search-output',
+        pathMatch: 'full'
       }
     ])
   ],
