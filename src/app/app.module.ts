@@ -8,16 +8,22 @@ import { ApiModule } from 'src/app/api';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { SplashComponent } from 'src/app/splash';
+import { SearchPageComponent } from './search/layouts/search-page.component';
+import { SharedModule } from './shared';
+import { SearchFormComponent } from './search/search-form';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SplashComponent
+    SplashComponent,
+    SearchPageComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
     ApiModule.configureApiUrl(environment.deezerRapidApiDomainName, environment.deezerRapidApiKey),
     AppRoutingModule
   ],
