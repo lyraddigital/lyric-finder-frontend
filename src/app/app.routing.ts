@@ -18,7 +18,7 @@ import { SearchPageComponent } from 'src/app/search';
         },
         {
             path: '',
-            redirectTo: '/search',
+            redirectTo: 'search',
             pathMatch: 'full'
         }
     ], { enableTracing: true })
