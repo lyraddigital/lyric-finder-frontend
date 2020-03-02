@@ -12,16 +12,16 @@ import { SearchPageComponent } from 'src/app/search';
             component: SplashComponent
         },
         {
-            path: 'search/:searchTerm',
+            path: 'search',
             component: SearchPageComponent,
             loadChildren: () => import('src/app/search/search.module').then(m => m.SearchModule),
         },
         {
             path: '',
-            redirectTo: '/search/',
+            redirectTo: '/search',
             pathMatch: 'full'
         }
-    ])
+    ], { enableTracing: true })
   ],
   exports: [
     RouterModule
