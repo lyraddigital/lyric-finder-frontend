@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared';
 import { SearchRoutingModule } from './search.routing.module';
-import { SearchPageComponent } from './search-page.component';
+import { SearchPageComponent } from './layouts/search-page.component';
 import { SearchFormComponent } from './search-form';
 import { SearchStartComponent } from './search-start';
 import {
@@ -26,9 +25,8 @@ import {
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
+    SearchRoutingModule,
     SharedModule,
-    SearchRoutingModule
   ],
   exports: [
     SearchPageComponent

@@ -7,7 +7,7 @@
 <main>
     <ldsc-search-form (searchTermUpdated)="performSearch($event)"></ldsc-search-form> 
     <div class="main-section">
-        <router-outlet name="search-output"></router-outlet>
+        <ng-content></ng-content>
     </div>
     <footer>
         <ldsc-action-buttons></ldsc-action-buttons>

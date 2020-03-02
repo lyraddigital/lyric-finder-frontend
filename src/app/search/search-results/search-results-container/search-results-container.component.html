@@ -1,8 +1,8 @@
-<ng-template #searchResults>
+<ldsc-search-page-layout>
     <ng-container *ngIf="searchResults$ | async as searchResults; else loading;">
         <ldsc-search-result-list [searchResults]="searchResults"></ldsc-search-result-list>
     </ng-container>
     <ng-template #loading>
         <ldsc-loader></ldsc-loader>
     </ng-template>
-</ng-template>
+</ldsc-search-page-layout>

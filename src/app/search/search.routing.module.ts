@@ -8,20 +8,17 @@ import { SearchStartComponent } from './search-start';
   imports: [
     RouterModule.forChild([
       {
-        path: 'results',
+        path: 'results/:searchTerm',
         component: SearchResultsContainerComponent,
-        outlet: 'search-output'
       },
       {
         path: 'start',
         component: SearchStartComponent,
-        outlet: 'search-output',
         pathMatch: 'full'
       },
       {
         path: '',
-        component: SearchStartComponent,
-        outlet: 'search-output',
+        redirectTo: 'start',
         pathMatch: 'full'
       }
     ])

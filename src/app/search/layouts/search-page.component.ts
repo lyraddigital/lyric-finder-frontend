@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
+  selector: 'ldsc-search-page-layout',
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss']
 })
