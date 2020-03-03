@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
 
@@ -9,20 +10,14 @@ import { filter, take } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   initialSearchTerm = 'test';
+  private previousSearchTerm = this.initialSearchTerm;
 
   constructor(
     private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly location: Location
   ) { }
 
   ngOnInit() {
-    let route = this.router.routerState.root;
-
-    while (route.firstChild) {
-      route = route.firstChild;
-    }
-
-    console.log(route.snapshot);
     // this.router.events.pipe(
     //   filter(e => e instanceof NavigationEnd),
     //   take(1)
@@ -44,10 +39,17 @@ export class AppComponent implements OnInit {
   }
 
   performSearch(searchTerm: string): void {
-    if (searchTerm && searchTerm.length > 0) {
+    const currentSearchTermIsNotEmpty = searchTerm && searchTerm.length > 0;
+    const previousSearchTermIsNotEmpty = this.previousSearchTerm && this.previousSearchTerm.length > 0;
+
+    if (currentSearchTermIsNotEmpty && !previousSearchTermIsNotEmpty) {
       this.router.navigateByUrl(`/search/results/${searchTerm}`);
-    } else {
+    } else if (!currentSearchTermIsNotEmpty) {
       this.router.navigateByUrl('/search/start');
+    } else {
+      this.location.replaceState(`/search/results/${searchTerm}`);
     }
+
+    this.previousSearchTerm = searchTerm;
   }
 }
