@@ -52,17 +52,6 @@
 @media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
     :host {
         form {
-            // > .mobile-clear-button {
-            //     background: #000;
-            //     border-radius: 100%;
-            //     border: 0;
-            //     outline: none;
-            //     width: 32px;
-            //     height: 32px;
-            //     padding: 0;
-            //     margin-right: 16px;
-            // }
-
             > .mobile-clear-button {
                 display: none;
             }
