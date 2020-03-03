@@ -1,20 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { ActionButtonsComponent } from './layout';
+import { ActionButtonsComponent, FooterComponent, SideBarComponent, TopBarComponent } from './layout';
 import { LoaderComponent } from './loader';
+import { SearchFormComponent } from './search-form';
+import { HistoryNavigationButtonsComponent } from './history-navigation-buttons/history-navigation-buttons.component';
 
 @NgModule({
   declarations: [
     ActionButtonsComponent,
-    LoaderComponent
+    LoaderComponent,
+    SearchFormComponent,
+    TopBarComponent,
+    SideBarComponent,
+    FooterComponent,
+    HistoryNavigationButtonsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
-    ActionButtonsComponent,
-    LoaderComponent
+    LoaderComponent,
+    SearchFormComponent,
+    TopBarComponent,
+    SideBarComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

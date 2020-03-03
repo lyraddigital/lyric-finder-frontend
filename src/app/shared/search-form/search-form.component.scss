@@ -1,0 +1,85 @@
+:host {
+    flex: 1;
+    display: flex;
+
+    form {
+        flex: 1;
+        display: flex;
+    
+        > .search-field {
+            flex: 1 0 0;
+            display: flex;
+    
+            > input {
+                background: transparent;
+                font-size: 1.6rem;
+                border: 1px solid transparent;
+                flex: 1 0 0;
+                outline: none;
+                color: #FFF;
+                font-weight: bold;
+        
+                &::placeholder {
+                    color: #FFF;
+                }
+            }
+        }
+
+        .tablet-clear-button, .mobile-clear-button {
+            display: none;
+            position: absolute;
+            right: 0;
+            margin-top: 4px;
+            margin-right: 10px;
+            background: transparent;
+            cursor: pointer;
+            padding: 12px;
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+    }
+}
+
+@media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
+    :host {
+        form {
+            > .mobile-clear-button, .tablet-clear-button {
+                background: #000;
+                border-radius: 100%;
+                border: 0;
+                outline: none;
+                width: 32px;
+                height: 32px;
+                padding: 0;
+                margin-right: 16px;
+            }
+
+            > .search-field {
+                position: relative;
+                flex: 0 0 360px;
+                
+                > input {
+                    color: #000;
+                    font-size: 1.4rem;
+                    line-height: 4rem;
+                    height: 40px;
+                    padding: 6px 48px;
+                    font-weight: normal;
+                    background: url('/assets/images/icons/tablet/magnify.svg') 15px 8px no-repeat #FFF;
+                    border-radius: 500px;
+
+                    &::placeholder {
+                        color: #898989; 
+                    }
+                }
+
+                > .tablet-clear-button.active {
+                    display: block;
+                }
+            }
+        }
+    }
+}

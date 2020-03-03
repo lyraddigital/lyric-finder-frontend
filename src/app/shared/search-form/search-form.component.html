@@ -1,14 +1,4 @@
 <form [formGroup]="formGroup">
-    <button class="mobile-back-button">
-        <img src="assets/images/icons/mobile/left-arrow.svg" />
-    </button>
-    <button class="tablet-back-button">
-        <img src="assets/images/icons/tablet/left-arrow.svg" />
-    </button>
-    <button class="tablet-forward-button">
-        <img src="assets/images/icons/tablet/right-arrow.svg" />
-    </button>
-    
     <div class="search-field">
         <input type="text" formControlName="searchTerm" placeholder="Search" />
         <button class="tablet-clear-button" (click)="clearSearch()" [class.active]="searchBeingPerformed">

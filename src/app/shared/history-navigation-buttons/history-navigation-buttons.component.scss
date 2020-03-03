@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+
+    > button {
+        padding: 12px;
+        width: 48px;
+        height: 48px;
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+
+    > .tablet-back-button {
+        display: none;
+    }
+    
+    > .tablet-forward-button {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
+    :host {
+        > .mobile-back-button {
+            display: none;
+        }
+    
+        > .mobile-clear-button {
+            display: none;
+        }
+    
+        > .tablet-back-button {
+            display: block;
+        }
+    
+        > .tablet-forward-button {
+            display: block;
+        }   
+    }
+}
