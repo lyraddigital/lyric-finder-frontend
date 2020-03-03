@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from 'src/app/shared';
 import { SearchRoutingModule } from './search.routing.module';
-// import { SearchPageComponent } from './layouts/search-page.component';
-// import { SearchFormComponent } from './search-form';
+import { SearchContainerComponent, SearchTopBarComponent } from './layout';
+import { SearchFormComponent } from './search-form';
 import { SearchStartComponent } from './search-start';
 import {
   SearchResultListComponent,
@@ -15,21 +15,19 @@ import {
 
 @NgModule({
   declarations: [
-    // SearchPageComponent,
+    SearchContainerComponent,
     SearchStartComponent,
     SearchResultListComponent,
     SearchResultItemComponent,
-    // SearchFormComponent,
-    SearchResultsContainerComponent
+    SearchFormComponent,
+    SearchResultsContainerComponent,
+    SearchTopBarComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SearchRoutingModule,
-    SharedModule,
-  ],
-  exports: [
-    // SearchPageComponent
+    SharedModule
   ]
 })
 export class SearchModule { }
