@@ -1,2 +1,5 @@
 <ldsc-history-navigation-buttons></ldsc-history-navigation-buttons>
-<ldsc-search-form></ldsc-search-form>
+<ldsc-search-form 
+   [initialValue]="initialFormValue"
+   (searchTermUpdated)="triggerTermUpdated($event)">
+</ldsc-search-form>
