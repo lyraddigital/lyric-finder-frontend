@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { SearchService } from '../../search.service';
 import { SearchResultItem } from '../../models';
@@ -22,17 +22,20 @@ export class SearchResultsContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.componentDestroyed$ = new Subject<any>();
-    this.activatedRoute.params.pipe(
-      debounceTime(200),
-      takeUntil(this.componentDestroyed$)
-    ).subscribe(p => {
-      this.emptySearch = !(p && p.searchTerm);
+    // this.activatedRoute.params.pipe(
+    //   debounceTime(200),
+    //   takeUntil(this.componentDestroyed$)
+    // ).subscribe(p => {
+    //   this.emptySearch = !(p && p.searchTerm);
 
-      if (!this.emptySearch) {
-        const searchTerm = p.searchTerm as string;
-        this.searchResults$ = this.searchService.getSearchResults(searchTerm);
-      }
-    });
+    //   if (!this.emptySearch) {
+    //     const searchTerm = p.searchTerm as string;
+    //   }
+    // });
+
+    this.searchResults$ = this.searchService.searchResultsChanged().pipe(
+      takeUntil(this.componentDestroyed$)
+    );
   }
 
   ngOnDestroy(): void {

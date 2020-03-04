@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { SearchService } from '../../search.service';
+
 @Component({
   selector: 'ldsc-search-container',
   templateUrl: './search-container.component.html',
@@ -13,7 +15,8 @@ export class SearchContainerComponent {
 
   constructor(
     private readonly router: Router,
-    private readonly location: Location
+    private readonly location: Location,
+    private readonly searchService: SearchService
   ) { }
 
   performSearch(searchTerm: string): void {
@@ -30,6 +33,8 @@ export class SearchContainerComponent {
       // we achieve both objectives.
       this.location.replaceState(`/search/results/${searchTerm}`);
     }
+
+    this.searchService.performSearch(searchTerm);
 
     this.previousSearchTerm = searchTerm;
   }

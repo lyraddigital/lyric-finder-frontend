@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { SearchResultItem } from './models';
@@ -9,9 +9,11 @@ import { SearchResultItem } from './models';
   providedIn: 'root'
 })
 export class SearchService {
+  private searchResultsChangedSubject = new Subject<Array<SearchResultItem>>();
+
   constructor(private httpClient: HttpClient) {}
 
-  getSearchResults(searchTerm: string): Observable<Array<SearchResultItem>> {
+  performSearch(searchTerm: string) {
     const query = encodeURIComponent(searchTerm);
 
     return this.httpClient.get(`/search?q=${query}`).pipe(
@@ -28,6 +30,12 @@ export class SearchService {
           largeThumbnailSrc: r.album && r.album.cover_medium ? r.album.cover_medium : ''
         }));
       })
-    );
+    ).subscribe(songs => {
+      this.searchResultsChangedSubject.next(songs);
+    });
+  }
+
+  searchResultsChanged(): Observable<Array<SearchResultItem>> {
+    return this.searchResultsChangedSubject.asObservable();
   }
 }
