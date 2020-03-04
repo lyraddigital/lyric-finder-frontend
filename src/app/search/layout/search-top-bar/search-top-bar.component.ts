@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ldsc-search-top-bar',
@@ -6,10 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./search-top-bar.component.scss']
 })
 export class SearchTopBarComponent {
-  @Input() initialFormValue: string;
-  @Output() searchTermUpdated = new EventEmitter<string>();
-
-  triggerTermUpdated(searchTerm: string) {
-    this.searchTermUpdated.emit(searchTerm);
-  }
+  @Input() searchFormGroup: FormGroup;
+  @Input() showSearchClearButton: boolean;
+  @Output() searchFormCleared = new EventEmitter();
 }

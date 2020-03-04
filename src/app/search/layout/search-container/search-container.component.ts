@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import { SearchService } from '../../search.service';
 
@@ -9,34 +10,46 @@ import { SearchService } from '../../search.service';
   templateUrl: './search-container.component.html',
   styleUrls: ['./search-container.component.scss']
 })
-export class SearchContainerComponent {
-  initialSearchTerm = 'test';
-  private previousSearchTerm = this.initialSearchTerm;
+export class SearchContainerComponent implements OnInit, OnDestroy {
+  initialSearchTerm = '';
+  formGroup: FormGroup;
+  showSearchClearButton = false;
+
+  private componentDestroyed$: Subject<any>;
+  private searchTermFormControl: AbstractControl;
 
   constructor(
-    private readonly router: Router,
-    private readonly location: Location,
+    private readonly formBuilder: FormBuilder,
     private readonly searchService: SearchService
   ) { }
 
-  performSearch(searchTerm: string): void {
-    const currentSearchTermIsEmpty = !!searchTerm && searchTerm.length === 0;
-    const previousSearchTermIsEmpty = !!this.previousSearchTerm && this.previousSearchTerm.length === 0;
-
-    if (!currentSearchTermIsEmpty && previousSearchTermIsEmpty) {
-      this.router.navigateByUrl(`/search/results/${searchTerm}`);
-    } else if (currentSearchTermIsEmpty) {
-      this.router.navigateByUrl('/search/start');
-    } else {
-      // We don't change the route, as it will force this component to refresh. We also
-      // don't want to maintain a history in the browser. By just replacing the state in history
-      // we achieve both objectives.
-      this.location.replaceState(`/search/results/${searchTerm}`);
-    }
-
-    this.searchService.performSearch(searchTerm);
-
-    this.previousSearchTerm = searchTerm;
+  ngOnInit(): void {
+    this.configureForm();
   }
 
+  ngOnDestroy() {
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
+  }
+
+  clearFormGroup() {
+    this.formGroup.reset();
+  }
+
+  private configureForm(): void {
+    this.componentDestroyed$ = new Subject<any>();
+    this.formGroup = this.formBuilder.group({
+      searchTerm: [this.initialSearchTerm]
+    });
+
+    this.searchTermFormControl = this.formGroup.get('searchTerm');
+
+    this.searchTermFormControl.valueChanges.pipe(
+      debounceTime(200),
+      takeUntil(this.componentDestroyed$)
+    ).subscribe(value => {
+      this.showSearchClearButton = value && value.length > 0;
+      this.searchService.performSearch(value);
+    });
+  }
 }
