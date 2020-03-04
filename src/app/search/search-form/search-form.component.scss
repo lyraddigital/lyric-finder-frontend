@@ -1,7 +1,4 @@
 :host {
-    flex: 1;
-    display: flex;
-
     form {
         flex: 1;
         display: flex;
@@ -63,7 +60,6 @@
                 > input {
                     color: #000;
                     font-size: 1.4rem;
-                    line-height: 4rem;
                     height: 40px;
                     padding: 6px 48px;
                     font-weight: normal;
@@ -77,7 +73,6 @@
 
                 > .tablet-clear-button.active {
                     display: block;
-                    background: transparent;
                 }
             }
         }

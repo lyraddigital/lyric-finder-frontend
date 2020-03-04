@@ -1,13 +1,13 @@
 :host {
     flex: 1 0 0;
     display: flex;
-    
+    overflow-y: auto;
+    scrollbar-width: none;
+
     > .song-list {
         list-style: none;
         flex: 1 0 0;
         padding: 8px 0;
-        overflow-y: auto;
-        scrollbar-width: none;
     }
 }
 
@@ -15,7 +15,7 @@
     :host {
         padding: 0 32px;
 
-        .song-list {
+        > .song-list {
             display: grid;
             padding: 0;
             grid-gap: 16px;
