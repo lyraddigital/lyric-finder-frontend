@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -16,24 +15,13 @@ export class SearchResultsContainerComponent implements OnInit, OnDestroy {
   emptySearch = true;
 
   constructor(
-    private readonly searchService: SearchService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly searchService: SearchService
   ) { }
 
   ngOnInit(): void {
     this.componentDestroyed$ = new Subject<any>();
-    // this.activatedRoute.params.pipe(
-    //   debounceTime(200),
-    //   takeUntil(this.componentDestroyed$)
-    // ).subscribe(p => {
-    //   this.emptySearch = !(p && p.searchTerm);
 
-    //   if (!this.emptySearch) {
-    //     const searchTerm = p.searchTerm as string;
-    //   }
-    // });
-
-    this.searchResults$ = this.searchService.searchResultsChanged().pipe(
+    this.searchResults$ = this.searchService.onSearchResultsChanged().pipe(
       takeUntil(this.componentDestroyed$)
     );
   }

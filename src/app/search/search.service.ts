@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { concat, Observable, Subject } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 
 import { SearchResultItem } from './models';
 
@@ -12,10 +12,11 @@ import { SearchResultItem } from './models';
 })
 export class SearchService {
   private previousSearchTerm = '';
-  private searchResultsChangedSubject = new Subject<Array<SearchResultItem>>();
+  private searchFormTermUpdatedSubject = new Subject<string>();
 
   constructor(
     private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute,
     private readonly location: Location,
     private readonly httpClient: HttpClient
   ) {}
@@ -33,15 +34,28 @@ export class SearchService {
       // don't want to maintain a history in the browser. By just replacing the state in history
       // we achieve both objectives.
       this.location.replaceState(`/search/results/${searchTerm}`);
+      this.searchFormTermUpdatedSubject.next(searchTerm);
     }
 
     this.previousSearchTerm = searchTerm;
   }
 
-  configureSearch(searchTerm: string): void {
+  onSearchResultsChanged(): Observable<Array<SearchResultItem>> {
+    const searchFormTermUpdated$ = this.onSearchFormTermUpdated();
+
+    return concat(searchFormTermUpdated$).pipe(
+      switchMap(searchTerm => this.getResultsFromApi(searchTerm))
+    );
+  }
+
+  private onSearchFormTermUpdated(): Observable<string> {
+    return this.searchFormTermUpdatedSubject.asObservable();
+  }
+
+  private getResultsFromApi(searchTerm: string): Observable<Array<SearchResultItem>> {
     const query = encodeURIComponent(searchTerm);
 
-    this.httpClient.get(`/search?q=${query}`).pipe(
+    return this.httpClient.get(`/search?q=${query}`).pipe(
       take(1),
       map((response: any) => {
         if (!response || !response.data) {
@@ -55,12 +69,6 @@ export class SearchService {
           largeThumbnailSrc: r.album && r.album.cover_medium ? r.album.cover_medium : ''
         }));
       })
-    ).subscribe(songs => {
-      this.searchResultsChangedSubject.next(songs);
-    });
-  }
-
-  searchResultsChanged(): Observable<Array<SearchResultItem>> {
-    return this.searchResultsChangedSubject.asObservable();
+    );
   }
 }

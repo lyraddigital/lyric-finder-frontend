@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil, tap } from 'rxjs/operators';
 
 import { SearchService } from '../../search.service';
 
@@ -11,7 +11,6 @@ import { SearchService } from '../../search.service';
   styleUrls: ['./search-container.component.scss']
 })
 export class SearchContainerComponent implements OnInit, OnDestroy {
-  initialSearchTerm = '';
   formGroup: FormGroup;
   showSearchClearButton = false;
 
@@ -39,7 +38,7 @@ export class SearchContainerComponent implements OnInit, OnDestroy {
   private configureForm(): void {
     this.componentDestroyed$ = new Subject<any>();
     this.formGroup = this.formBuilder.group({
-      searchTerm: [this.initialSearchTerm]
+      searchTerm: ['']
     });
 
     this.searchTermFormControl = this.formGroup.get('searchTerm');
