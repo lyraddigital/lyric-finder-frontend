@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchTopBarComponent } from './search-top-bar.component';
+import { PageLayoutComponent } from './page-layout.component';
 
-describe('SearchTopBarComponent', () => {
-  let component: SearchTopBarComponent;
-  let fixture: ComponentFixture<SearchTopBarComponent>;
+describe('PageLayoutComponent', () => {
+  let component: PageLayoutComponent;
+  let fixture: ComponentFixture<PageLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchTopBarComponent ]
+      declarations: [ PageLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchTopBarComponent);
+    fixture = TestBed.createComponent(PageLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

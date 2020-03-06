@@ -1,6 +1,6 @@
 <form [formGroup]="formGroup">
     <div class="search-field">
-        <input type="text" formControlName="searchTerm" placeholder="Search" />
+        <input type="text" formControlName="searchTerm" placeholder="Search" autofocus />
         <button class="tablet-clear-button" (click)="searchCleared.emit()" [class.active]="showClearButton">
             <img src="assets/images/icons/tablet/x-symbol.svg" />
         </button>

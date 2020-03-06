@@ -1,0 +1,10 @@
+<ldsc-side-bar></ldsc-side-bar>
+<main>
+    <ldsc-top-bar 
+        [searchFormGroup]="formGroup"
+        [showSearchClearButton]="showSearchClearButton"
+        (searchFormCleared)="clearFormGroup()">
+    </ldsc-top-bar>
+    <ng-content></ng-content>
+    <ldsc-footer></ldsc-footer>
+</main>

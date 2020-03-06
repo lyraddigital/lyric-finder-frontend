@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ActionButtonsComponent, FooterComponent, SideBarComponent } from './layout';
+import { ActionButtonsComponent, FooterComponent, SideBarComponent, TopBarComponent, PageLayoutComponent } from './layout';
 import { LoaderComponent } from './loader';
 import { HistoryNavigationButtonsComponent } from './history-navigation-buttons';
 
@@ -11,18 +11,17 @@ import { HistoryNavigationButtonsComponent } from './history-navigation-buttons'
     ActionButtonsComponent,
     LoaderComponent,
     SideBarComponent,
+    TopBarComponent,
     FooterComponent,
-    HistoryNavigationButtonsComponent
+    HistoryNavigationButtonsComponent,
+    PageLayoutComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
   exports: [
-    LoaderComponent,
-    SideBarComponent,
-    FooterComponent,
-    HistoryNavigationButtonsComponent
+    PageLayoutComponent
   ]
 })
 export class SharedModule { }
