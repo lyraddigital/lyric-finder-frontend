@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ActionButtonsComponent, FooterComponent, SideBarComponent, TopBarComponent, PageLayoutComponent } from './layout';
 import { LoaderComponent } from './loader';
+import { SearchFormComponent } from './search-form';
 import { HistoryNavigationButtonsComponent } from './history-navigation-buttons';
 
 @NgModule({
@@ -11,6 +12,7 @@ import { HistoryNavigationButtonsComponent } from './history-navigation-buttons'
     ActionButtonsComponent,
     LoaderComponent,
     SideBarComponent,
+    SearchFormComponent,
     TopBarComponent,
     FooterComponent,
     HistoryNavigationButtonsComponent,
