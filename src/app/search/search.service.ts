@@ -6,9 +6,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { SearchFormService } from '../core/search-form.service';
 import { SearchResultItem } from './models';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SearchService {
   constructor(
     private readonly httpClient: HttpClient,

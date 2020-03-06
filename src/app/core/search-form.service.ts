@@ -17,6 +17,8 @@ export class SearchFormService {
     private readonly location: Location
   ) {
     this.showSearchFormSubject$ = new Subject<boolean>();
+    this.searchFieldUpdatedSubject$ = new Subject<string>();
+    this.searchFieldRefreshedSubject$ = new Subject<string>();
   }
 
   onSearchFormVisibilityChanged(): Observable<boolean> {

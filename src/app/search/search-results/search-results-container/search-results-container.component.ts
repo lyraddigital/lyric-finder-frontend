@@ -7,7 +7,8 @@ import { SearchResultItem } from '../../models';
 
 @Component({
   templateUrl: './search-results-container.component.html',
-  styleUrls: ['./search-results-container.component.scss']
+  styleUrls: ['./search-results-container.component.scss'],
+  providers: [SearchService]
 })
 export class SearchResultsContainerComponent implements OnInit, OnDestroy {
   searchResults$: Observable<Array<SearchResultItem>>;

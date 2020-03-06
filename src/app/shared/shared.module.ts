@@ -23,7 +23,8 @@ import { HistoryNavigationButtonsComponent } from './history-navigation-buttons'
     ReactiveFormsModule
   ],
   exports: [
-    PageLayoutComponent
+    PageLayoutComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
