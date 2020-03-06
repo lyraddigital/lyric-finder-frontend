@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { debounceTime, map, switchMap, take } from 'rxjs/operators';
 
 import { SearchFormService } from '../core/search-form.service';
 import { SearchResultItem } from './models';
@@ -15,6 +15,7 @@ export class SearchService {
 
   onSearchResultsChanged(): Observable<Array<SearchResultItem>> {
     return this.searchFormService.onSearchFieldUpdated().pipe(
+      debounceTime(350),
       switchMap(searchTerm => this.getResultsFromApi(searchTerm))
     );
   }
