@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { FetchResult } from 'src/app/core';
 import { SearchService } from '../../search.service';
 import { SearchResultItem } from '../../models';
 
@@ -11,7 +12,7 @@ import { SearchResultItem } from '../../models';
   providers: [SearchService]
 })
 export class SearchResultsContainerComponent implements OnInit, OnDestroy {
-  searchResults$: Observable<Array<SearchResultItem>>;
+  searchFetchResult$: Observable<FetchResult<Array<SearchResultItem>>>;
   componentDestroyed$: Subject<any>;
   emptySearch = true;
 
@@ -22,7 +23,7 @@ export class SearchResultsContainerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.componentDestroyed$ = new Subject<any>();
 
-    this.searchResults$ = this.searchService.onSearchResultsChanged().pipe(
+    this.searchFetchResult$ = this.searchService.onSearchResultsChanged().pipe(
       takeUntil(this.componentDestroyed$)
     );
   }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SplashComponent } from './splash.component';
+import { SearchResultsErrorComponent } from './search-results-error.component';
 
-describe('SplashComponent', () => {
-  let component: SplashComponent;
-  let fixture: ComponentFixture<SplashComponent>;
+describe('SearchResultsErrorComponent', () => {
+  let component: SearchResultsErrorComponent;
+  let fixture: ComponentFixture<SearchResultsErrorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SplashComponent ]
+      declarations: [ SearchResultsErrorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SplashComponent);
+    fixture = TestBed.createComponent(SearchResultsErrorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

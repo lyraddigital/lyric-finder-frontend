@@ -8,6 +8,7 @@
         background: transparent;
         border: none;
         outline: none;
+        cursor: pointer;
     }
 
     > .tablet-back-button {
@@ -22,10 +23,6 @@
 @media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
     :host {
         > .mobile-back-button {
-            display: none;
-        }
-    
-        > .mobile-clear-button {
             display: none;
         }
     

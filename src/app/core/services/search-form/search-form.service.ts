@@ -45,7 +45,7 @@ export class SearchFormService {
       // We don't change the route, as it will force this component to refresh. We also
       // don't want to maintain a history in the browser. By just replacing the state in history
       // we achieve both objectives.
-      this.location.replaceState(`/search/results/${searchTerm}`);
+      // this.location.replaceState(`/search/results/${searchTerm}`);
       this.searchFieldUpdatedSubject$.next(searchTerm);
     }
 

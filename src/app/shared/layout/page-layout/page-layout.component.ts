@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
-import { SearchFormService } from 'src/app/core/search-form.service';
+import { SearchFormService } from 'src/app/core';
 
 @Component({
   selector: 'ldsc-page-layout',
@@ -32,7 +32,7 @@ export class PageLayoutComponent implements OnInit {
     });
 
     this.searchFormService.onSearchFieldRefreshed().subscribe(value => {
-      this.searchTermFormControl.setValue(value);
+      this.searchTermFormControl.setValue(value, { emitEvent: false });
     });
   }
 

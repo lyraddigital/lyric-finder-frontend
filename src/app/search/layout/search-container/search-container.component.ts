@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { SearchFormService } from 'src/app/core/search-form.service';
+import { SearchFormService } from 'src/app/core';
 
 @Component({
   selector: 'ldsc-search-container',

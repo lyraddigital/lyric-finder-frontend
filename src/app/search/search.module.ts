@@ -9,7 +9,8 @@ import { SearchStartComponent } from './search-start';
 import {
   SearchResultListComponent,
   SearchResultItemComponent,
-  SearchResultsContainerComponent
+  SearchResultsContainerComponent,
+  SearchResultsErrorComponent
 } from './search-results';
 
 @NgModule({
@@ -18,7 +19,8 @@ import {
     SearchStartComponent,
     SearchResultListComponent,
     SearchResultItemComponent,
-    SearchResultsContainerComponent
+    SearchResultsContainerComponent,
+    SearchResultsErrorComponent
   ],
   imports: [
     CommonModule,

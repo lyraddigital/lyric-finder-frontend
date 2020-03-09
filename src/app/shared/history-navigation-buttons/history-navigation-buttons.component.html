@@ -1,9 +1,9 @@
-<button class="mobile-back-button">
+<button class="mobile-back-button" [disabled]="backButtonDisabled" (click)="navigateBack()">
     <img src="assets/images/icons/mobile/left-arrow.svg" />
 </button>
-<button class="tablet-back-button">
+<button class="tablet-back-button" [disabled]="backButtonDisabled" (click)="navigateBack()">
     <img src="assets/images/icons/tablet/left-arrow.svg" />
 </button>
-<button class="tablet-forward-button">
+<button class="tablet-forward-button" [disabled]="forwardButtonDisabled" (click)="navigateForward()">
     <img src="assets/images/icons/tablet/right-arrow.svg" />
 </button>
