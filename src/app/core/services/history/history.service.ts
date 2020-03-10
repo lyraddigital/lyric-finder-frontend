@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { filter, scan } from 'rxjs/operators';
@@ -13,7 +14,10 @@ export class HistoryService {
   private history: Array<HistoryEntry>;
   private currentIndex: number;
 
-  constructor(private router: Router) {
+  constructor(
+    private readonly router: Router,
+    private readonly location: Location
+  ) {
     this.history = [];
     this.currentIndex = 0;
     this.navigationStateChanged = new Subject<NavigationState>();
@@ -23,6 +27,11 @@ export class HistoryService {
 
   onNavigationStateChanged(): Observable<NavigationState> {
     return this.navigationStateChanged.asObservable();
+  }
+
+  updateRecentHistoryWithTerm(searchTerm: string): void {
+    const currentNavigationId = this.history[this.currentIndex].navigationId;
+    this.location.replaceState(`/search/results/${searchTerm}`, undefined, { navigationId: currentNavigationId });
   }
 
   private watchRouteEvents(): void {
@@ -41,7 +50,7 @@ export class HistoryService {
           return acc;
         }
       }, this.getDefaultNavigationEvent()),
-    ).subscribe(this.triggerNavigationStateChanged);
+    ).subscribe(() => this.triggerNavigationStateChanged());
   }
 
   private getDefaultNavigationEvent(): NavigationEvent {
@@ -74,7 +83,7 @@ export class HistoryService {
 
   private updateHistoryBasedOnImperitiveAction(event: NavigationEvent, endNav: NavigationEnd): void {
     this.history.splice(this.currentIndex + 1);
-    this.history.push({ navigationId: event.navigationId, url: endNav.urlAfterRedirects });
+    this.history.push({ navigationId: event.navigationId });
 
     this.currentIndex = this.history.length - 1;
   }

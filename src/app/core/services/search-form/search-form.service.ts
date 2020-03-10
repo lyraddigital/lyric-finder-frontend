@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+
+import { HistoryService } from '../history';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class SearchFormService {
 
   constructor(
     private readonly router: Router,
-    private readonly location: Location
+    private readonly historyService: HistoryService
   ) {
     this.showSearchFormSubject$ = new Subject<boolean>();
     this.searchFieldUpdatedSubject$ = new Subject<string>();
@@ -45,7 +46,7 @@ export class SearchFormService {
       // We don't change the route, as it will force this component to refresh. We also
       // don't want to maintain a history in the browser. By just replacing the state in history
       // we achieve both objectives.
-      // this.location.replaceState(`/search/results/${searchTerm}`);
+      this.historyService.updateRecentHistoryWithTerm(searchTerm);
       this.searchFieldUpdatedSubject$.next(searchTerm);
     }
 
