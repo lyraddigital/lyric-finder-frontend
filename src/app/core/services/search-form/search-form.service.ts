@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
 import { HistoryService } from '../history';
@@ -13,10 +12,7 @@ export class SearchFormService {
   private searchFieldRefreshedSubject$: Subject<string>;
   private previousSearchTerm = '';
 
-  constructor(
-    private readonly router: Router,
-    private readonly historyService: HistoryService
-  ) {
+  constructor(private readonly historyService: HistoryService) {
     this.showSearchFormSubject$ = new Subject<boolean>();
     this.searchFieldUpdatedSubject$ = new Subject<string>();
     this.searchFieldRefreshedSubject$ = new Subject<string>();
@@ -39,15 +35,14 @@ export class SearchFormService {
     const previousSearchTermIsEmpty = !this.previousSearchTerm || this.previousSearchTerm.length === 0;
 
     if (!currentSearchTermIsEmpty && previousSearchTermIsEmpty) {
-      this.router.navigateByUrl(`/search/results/${searchTerm}`);
+      this.historyService.navigateToUrl(`/search/results/${searchTerm}`);
     } else if (currentSearchTermIsEmpty) {
-      this.router.navigateByUrl('/search/start');
+      this.historyService.navigateToUrl('/search/start');
     } else {
       // We don't change the route, as it will force this component to refresh. We also
       // don't want to maintain a history in the browser. By just replacing the state in history
       // we achieve both objectives.
-      this.historyService.updateRecentHistoryWithTerm(searchTerm);
-      this.searchFieldUpdatedSubject$.next(searchTerm);
+      this.historyService.navigateToUrl(`/search/results/${searchTerm}`, false);
     }
 
     this.previousSearchTerm = searchTerm;

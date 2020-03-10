@@ -1,13 +1,11 @@
-<ldsc-search-container>
-    <ng-container *ngIf="searchFetchResult$ | async as searchFetchResult; else loading;">
-        <ng-container *ngIf="searchFetchResult.success; else error;">
-            <ldsc-search-result-list [searchResults]="searchFetchResult.result"></ldsc-search-result-list>
-        </ng-container>
-        <ng-template #error>
-            <ldsc-search-results-error></ldsc-search-results-error>
-        </ng-template>
+<ng-container *ngIf="searchFetchResult$ | async as searchFetchResult; else loading;">
+    <ng-container *ngIf="searchFetchResult.success; else error;">
+        <ldsc-search-result-list [searchResults]="searchFetchResult.result"></ldsc-search-result-list>
     </ng-container>
-    <ng-template #loading>
-        <ldsc-loader></ldsc-loader>
+    <ng-template #error>
+        <ldsc-search-results-error></ldsc-search-results-error>
     </ng-template>
-</ldsc-search-container>
+</ng-container>
+<ng-template #loading>
+    <ldsc-loader></ldsc-loader>
+</ng-template>

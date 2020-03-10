@@ -23,15 +23,21 @@ export class HistoryService {
     this.navigationStateChanged = new Subject<NavigationState>();
 
     this.watchRouteEvents();
+    this.location.onUrlChange(url => {
+      console.log(url);
+    });
   }
 
   onNavigationStateChanged(): Observable<NavigationState> {
     return this.navigationStateChanged.asObservable();
   }
 
-  updateRecentHistoryWithTerm(searchTerm: string): void {
-    const currentNavigationId = this.history[this.currentIndex].navigationId;
-    this.location.replaceState(`/search/results/${searchTerm}`, undefined, { navigationId: currentNavigationId });
+  navigateToUrl(url: string, useRouter: boolean = true): void {
+    if (useRouter) {
+      this.router.navigateByUrl(url);
+    } else {
+      this.updateRecentHistoryWithUrl(url);
+    }
   }
 
   private watchRouteEvents(): void {
@@ -51,6 +57,11 @@ export class HistoryService {
         }
       }, this.getDefaultNavigationEvent()),
     ).subscribe(() => this.triggerNavigationStateChanged());
+  }
+
+  private updateRecentHistoryWithUrl(url: string): void {
+    const currentNavigationId = this.history[this.currentIndex].navigationId;
+    this.location.replaceState(url, undefined, { navigationId: currentNavigationId });
   }
 
   private getDefaultNavigationEvent(): NavigationEvent {
