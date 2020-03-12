@@ -22,6 +22,10 @@
                 &::placeholder {
                     color: #FFF;
                 }
+
+                &::-ms-clear {
+                    display: none;
+                }
             }
 
             > .tablet-clear-button {
@@ -66,7 +70,8 @@
                     height: 40px;
                     padding: 6px 48px;
                     font-weight: normal;
-                    background: url('/assets/images/icons/tablet/magnify.svg') 15px 8px no-repeat #FFF;
+                    // background: url('/assets/images/icons/tablet/magnify.svg') 15px 8px no-repeat #FFF;
+                    background: #FFF;
                     border-radius: 500px;
 
                     &::placeholder {

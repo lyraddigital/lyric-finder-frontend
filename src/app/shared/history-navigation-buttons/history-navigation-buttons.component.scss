@@ -8,6 +8,7 @@
         background: transparent;
         border: none;
         outline: none;
+        border-radius: 500px;
         cursor: pointer;
     }
 
@@ -22,6 +23,11 @@
 
 @media (min-width: 768px) and (orientation: portrait), (min-width: 824px) and (orientation: landscape) {
     :host {
+        > button {
+            background: #000;
+            margin-right: 10px;
+        }
+
         > .mobile-back-button {
             display: none;
         }

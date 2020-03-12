@@ -1,12 +1,12 @@
 <form [formGroup]="formGroup">
     <div class="search-field">
-        <input type="text" formControlName="searchTerm" placeholder="Search" autofocus />
+        <input type="text" formControlName="searchTerm" placeholder="Search" />
         <button class="tablet-clear-button" (click)="searchCleared.emit()" [class.active]="showClearButton">
-            <img src="assets/images/icons/tablet/x-symbol.svg" />
+            <ldsc-x-symbol></ldsc-x-symbol>
         </button>
     </div>
 
     <button class="mobile-clear-button" (click)="searchCleared.emit()">
-        <img src="assets/images/icons/mobile/x-symbol.svg" />
+        <ldsc-x-symbol isWhite="true"></ldsc-x-symbol>
     </button>
 </form>

@@ -1,0 +1,7 @@
+.arrow-icon {
+    fill: #FFF;
+
+    &.disabled {
+        fill: rgba(170, 170, 170, 0.6);
+    }
+}
