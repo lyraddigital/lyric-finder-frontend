@@ -28,6 +28,15 @@
                 }
             }
 
+            > .tablet-magnifying-glass {
+                display: none;
+                position: absolute;
+                top: 10px;
+                left: 12px;
+                width: 24px;
+                height: 24px;
+            }
+
             > .tablet-clear-button {
                 display: none;
                 position: absolute;
@@ -77,6 +86,10 @@
                     &::placeholder {
                         color: #898989; 
                     }
+                }
+
+                > .tablet-magnifying-glass {
+                    display: block;
                 }
 
                 > .tablet-clear-button.active {

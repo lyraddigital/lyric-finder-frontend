@@ -1,5 +1,8 @@
 <form [formGroup]="formGroup">
     <div class="search-field">
+        <div class="tablet-magnifying-glass">
+            <ldsc-magnify-glass></ldsc-magnify-glass>
+        </div>
         <input type="text" formControlName="searchTerm" placeholder="Search" />
         <button class="tablet-clear-button" (click)="searchCleared.emit()" [class.active]="showClearButton">
             <ldsc-x-symbol></ldsc-x-symbol>
