@@ -1,9 +1,6 @@
-<button class="mobile-back-button" [disabled]="backButtonDisabled" (click)="navigateBack()">
+<button class="back-button" [disabled]="backButtonDisabled" (click)="navigateBack()">
     <ldsc-left-arrow [disabled]="backButtonDisabled"></ldsc-left-arrow>
 </button>
-<button class="tablet-back-button" [disabled]="backButtonDisabled" (click)="navigateBack()">
-    <ldsc-left-arrow [disabled]="backButtonDisabled"></ldsc-left-arrow>
-</button>
-<button class="tablet-forward-button" [disabled]="forwardButtonDisabled" (click)="navigateForward()">
+<button class="forward-button" [disabled]="forwardButtonDisabled" (click)="navigateForward()">
     <ldsc-right-arrow [disabled]="forwardButtonDisabled"></ldsc-right-arrow>
 </button>

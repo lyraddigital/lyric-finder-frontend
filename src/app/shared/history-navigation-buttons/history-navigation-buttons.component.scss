@@ -11,12 +11,8 @@
         border-radius: 500px;
         cursor: pointer;
     }
-
-    > .tablet-back-button {
-        display: none;
-    }
     
-    > .tablet-forward-button {
+    > .forward-button {
         display: none;
     }
 }
@@ -27,16 +23,8 @@
             background: #000;
             margin-right: 10px;
         }
-
-        > .mobile-back-button {
-            display: none;
-        }
     
-        > .tablet-back-button {
-            display: block;
-        }
-    
-        > .tablet-forward-button {
+        > .forward-button {
             display: block;
         }   
     }

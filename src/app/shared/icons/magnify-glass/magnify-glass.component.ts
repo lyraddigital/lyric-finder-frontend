@@ -5,4 +5,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './magnify-glass.component.html',
   styleUrls: ['../navigation-icons.scss', './magnify-glass.component.scss']
 })
-export class MagnifyGlassComponent {}
+export class MagnifyGlassComponent {
+  @Input() class: string;
+}
