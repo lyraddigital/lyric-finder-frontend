@@ -5,6 +5,4 @@ import { Component, Input } from '@angular/core';
   templateUrl: './magnify-glass.component.html',
   styleUrls: ['../navigation-icons.scss', './magnify-glass.component.scss']
 })
-export class MagnifyGlassComponent {
-    @Input() disabled: boolean;
-}
+export class MagnifyGlassComponent {}
