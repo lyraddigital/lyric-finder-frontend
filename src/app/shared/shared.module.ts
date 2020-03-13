@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { IconsModule } from './icons';
 import { ActionButtonsComponent, FooterComponent, SideBarComponent, TopBarComponent, PageLayoutComponent } from './layout';
 import { LoaderComponent } from './loader';
 import { SearchFormComponent } from './search-form';
 import { HistoryNavigationButtonsComponent } from './history-navigation-buttons';
-import { LeftArrowComponent, RightArrowComponent, XSymbolComponent, MagnifyGlassComponent } from './icons';
 
 @NgModule({
   declarations: [
@@ -17,15 +17,12 @@ import { LeftArrowComponent, RightArrowComponent, XSymbolComponent, MagnifyGlass
     TopBarComponent,
     FooterComponent,
     HistoryNavigationButtonsComponent,
-    PageLayoutComponent,
-    LeftArrowComponent,
-    RightArrowComponent,
-    XSymbolComponent,
-    MagnifyGlassComponent
+    PageLayoutComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IconsModule
   ],
   exports: [
     PageLayoutComponent,
